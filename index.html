@@ -1,482 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <!-- Add Remixicon CDN for hamburger icon support -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-629NHS4Q1N"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-629NHS4Q1N');
-    </script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sautaboy</title>
-    <script src="https://kit.fontawesome.com/e674bba739.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ashok Giri — Frontend Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Ashok Giri — Frontend developer (React, Next.js, TypeScript, Tailwind, Node, MongoDB)."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Added: ensure all color variables exist and text is visible -->
     <style>
-        #hexagon-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+      :root {
+        /* cohesive palette (used by the page and inline styles) */
+        --hot-pink: #ff6b35; /* warm primary */
+        --hot-pink-2: #00d4d4; /* teal accent */
+        --accent-1: #ff6b35;
+        --accent-2: #00d4d4;
+        --muted: #cfc7c0;
+        --glass: rgba(255, 107, 53, 0.06);
+      }
 
-        #cybersec-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+      /* Make sure body text is always readable */
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      li,
+      a,
+      label {
+        color: #e9e7e4 !important;
+      }
+
+      /* Nav and subtle text */
+      nav a {
+        color: var(--muted) !important;
+      }
+      .lead,
+      .panel p,
+      .skill p,
+      .project p {
+        color: var(--muted) !important;
+      }
+
+      /* Ensure inputs and textareas text visible */
+      input,
+      textarea {
+        color: #e9e7e4 !important;
+        background-color: #0b0b0d !important;
+      }
+
+      /* Buttons / tags use the palette variables */
+      .cta {
+        background: linear-gradient(
+          90deg,
+          var(--accent-1),
+          var(--accent-2)
+        ) !important;
+        color: #081016 !important;
+      }
+      .skill h4 {
+        color: var(--accent-2) !important;
+      }
+      .project h3 {
+        color: var(--accent-1) !important;
+      }
+
+      /* Respect reduced motion while keeping visibility */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
         }
+      }
     </style>
-</head>
-
-<body>
-    <canvas id="hexagon-canvas"></canvas>
-    <canvas id="cybersec-canvas"></canvas>
-    <i class="ri-menu-line sautaboy"></i>
-
-    <section id="header" class="">
-        <!-- Move hamburger icon inside header for proper stacking -->
-
-        <div class="navbar-title">
-            <h3 class="title-first-name">
-                <a href="#">Sautaboy</a>
-            </h3>
-
-        </div>
-        <div class="navbar-menu-container">
-            <ul class="navbar-menu">
-                <li><a class="profile-card-active a-navlink " href="#aboutme"> About </a></li>
-                <li><a class="profile-card-active a-navlink" href="#introduction">Works</a></li>
-                <li><a class="profile-card-active a-navlink" href="#skill">Skills</a></li>
-                <li><a class="profile-card-active a-navlink" href="#footer">Contacts</a></li>
-            </ul>
-        </div>
-        <div>
-            <ul class="social-media">
-                <li>
-                    <i class="fa-brands fa-linkedin-in"></i>
-                    <a href="https://www.linkedin.com/in/ashokgiridev/" target="_blank">LinkedIn</a>
-                </li>
-                <li>
-                    <i class="fa-brands fa-github"></i>
-                    <a href="https://github.com/sautaboy/" target="_blank">Github</a>
-                </li>
-                <li>
-                    <i class="fa-regular fa-envelope"></i>
-                    <a href="mailto:sautaboy">Email</a>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-
-    <div id="main">
-
-        <section id="content-body">
-            <div class="body-part-1">
-                <div class="developer-intro">
-                    <p>Front-End Developer</p>
-                    <p>Security Enthusiast</p>
-                </div>
-                <div class="body-title">
-                    <!--Any fool can write code that a computer can understand. Good programmers write code that humans can understand.-->
-                    <!-- <h1>Talk is cheap<br>Show me the code</h1> -->
-                    <h1> HI ,I AM Ashok Giri<br><span id="element"></span> </h1>
-                    <p>Crafting a Secure and User-Centric Digital Tomorrow</p>
-                    <a href="https://www.linkedin.com/in/saugat-pokharel-63390323a/">LET'S Connect!</a>
-                </div>
-                <div class="body-tail">
-                    <h1>7+
-                    </h1>
-                    <p>Certificatons<br>EXPERIENCE</p>
-                    <h1>4</h1>
-                    <p>PROJECTS<br>COMPLETED</p>
-                </div>
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <!-- interactive logo SVG -->
+          <img
+            height="50px"
+            width="50px"
+            style="border: 1px solid white; border-radius: 50px"
+            src="assets/logo.jpg"
+            alt="Ashok Giri"
+          />
+          <div>
+            <div class="brand">Ashok Giri</div>
+            <div style="font-size: 12px; color: var(--muted)">
+              Frontend Engineer
             </div>
+          </div>
+        </div>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
 
-            <div class="body-part-2">
-                <div class="container">
-
-                    <div class="svg-animation">
-                        <img src="assets/cyber.svg">
-                    </div>
-
-
-
-                </div>
+      <main>
+        <section class="hero">
+          <div>
+            <div class="eyebrow">Frontend · UI · 3D Web</div>
+            <h1>
+              Hi, I'm
+              <span
+                style="
+                  background: linear-gradient(
+                    90deg,
+                    var(--hot-pink),
+                    var(--hot-pink-2)
+                  );
+                  -webkit-background-clip: text;
+                  background-clip: text;
+                  color: transparent;
+                "
+                >Ashok Giri</span
+              ><br /><small
+                style="font-weight: 500; color: var(--muted); font-size: 0.9rem"
+                >I build polished web apps & delightful interfaces.</small
+              >
+            </h1>
+            <p class="lead">
+              Modern frontend development with React, Next.js, TypeScript and
+              Tailwind. I craft performance‑oriented UI, animations and
+              interactive 3D experiences.
+            </p>
+            <div style="margin-top: 18px">
+              <a class="cta" href="#contact">Work with me</a>
+              <a class="secondary" href="#projects">See projects</a>
             </div>
+            <div style="margin-top: 28px" class="panel">
+              <strong style="display: block">Key technologies</strong>
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  margin-top: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: var(--glass);
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    color: var(--hot-pink);
+                    font-weight: 600;
+                  "
+                  >React</span
+                >
+                <span
+                  style="
+                    background: var(--glass);
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    color: var(--hot-pink);
+                    font-weight: 600;
+                  "
+                  >Next.js</span
+                >
+                <span
+                  style="
+                    background: var(--glass);
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    color: var(--hot-pink);
+                    font-weight: 600;
+                  "
+                  >TypeScript</span
+                >
+                <span
+                  style="
+                    background: var(--glass);
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    color: var(--hot-pink);
+                    font-weight: 600;
+                  "
+                  >Tailwind</span
+                >
+              </div>
+            </div>
+          </div>
 
-
+          <aside class="panel avatar" aria-hidden>
+            <!-- stylized SVG blob that reacts to mouse -->
+            <svg
+              id="hero-blob"
+              viewBox="0 0 600 600"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="lg" x1="0" x2="1">
+                  <stop offset="0" stop-color="#ff4da6" />
+                  <stop offset="1" stop-color="#ff007f" />
+                </linearGradient>
+                <filter id="goo">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="18"
+                    result="blur"
+                  />
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 0.5 0 0 0  0 0 0.8 0 0  0 0 0 18 -7"
+                    result="goo"
+                  />
+                </filter>
+              </defs>
+              <g filter="url(#goo)">
+                <circle cx="300" cy="220" r="120" fill="url(#lg)" />
+                <circle cx="380" cy="320" r="90" fill="url(#lg)" />
+                <circle cx="230" cy="320" r="70" fill="url(#lg)" />
+              </g>
+              <text
+                x="50%"
+                y="54%"
+                text-anchor="middle"
+                fill="#fff"
+                font-family="Inter"
+                font-size="96"
+                font-weight="800"
+              >
+                AG
+              </text>
+            </svg>
+          </aside>
         </section>
-        <section id="aboutme">
-            <div class="body-part-2">
-                <div class="container">
 
-                    <div class="svg-animation">
-                        <img src="assets/who.svg">
-                    </div>
-
-
-
+        <section id="about">
+          <div class="panel">
+            <h2 style="margin-top: 0; color: var(--hot-pink-2)">About</h2>
+            <p style="color: var(--muted)">
+              I’m a frontend developer focusing on performant interfaces,
+              accessible component systems and delightful micro‑interactions. I
+              enjoy combining strong design sense with engineering rigor to ship
+              polished experiences.
+            </p>
+            <div
+              style="
+                display: flex;
+                gap: 12px;
+                margin-top: 14px;
+                flex-wrap: wrap;
+              "
+            >
+              <div style="min-width: 160px">
+                <strong>Location</strong>
+                <div style="color: var(--muted)">Kathmandu, Nepal</div>
+              </div>
+              <div style="min-width: 160px">
+                <strong>Experience</strong>
+                <div style="color: var(--muted)">4+ years</div>
+              </div>
+              <div style="min-width: 160px">
+                <strong>Availability</strong>
+                <div style="color: var(--muted)">
+                  Open for freelance & remote roles
                 </div>
+              </div>
             </div>
-            <div class="body-part-1">
-                <div class="body-title">
-                    <!-- <h1>Talk is cheap<br>Show me the code</h1> -->
-                    <h1>Who Am I?</h1>
-                    <p>
-I’m a BCA student at Tribhuvan University with a passion for understanding how technology works beneath the surface.
-My learning began through streaming tech content and exploring systems hands-on.
-This curiosity led me to learn web development technologies like Python, Django, JavaScript, HTML, and CSS.
-Alongside development, I have developed a keen interest in cybersecurity and network security.
-I’ve explored areas such as wireless sensor networks and image processing through self-driven projects.
-I hold certifications including Ethical Hacking Essentials, reflecting my commitment to security skills.
-I enjoy staying updated with emerging tech trends and continuously expanding my knowledge.
-Outside of technology, I love trekking and gaming, which balance my creative and analytical sides.
-My goal is to build secure and efficient systems that solve real-world problems.
-I am driven by curiosity and a passion to innovate at the intersection of software development and cybersecurity.
-                    </p>
-                    <a href="https://www.linkedin.com/in/saugat-pokharel-63390323a/">LET'S Connect!</a>
-                </div>
+          </div>
+        </section>
 
+        <section id="skills">
+          <h2 style="color: var(--hot-pink-2); margin: 0 0 18px">Skills</h2>
+          <div class="grid-3">
+            <div class="skill">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(#g)"></path>
+              </svg>
+              <h4>Frontend</h4>
+              <p>React, Next.js, TypeScript, Tailwind, CSS-in-JS</p>
             </div>
-
-
-
-
-    </div>
-    </div>
-
-
-    </section>
-
-    <section id="introduction">
-        <div class="heading-container">
-            <h3 class="section-heading">Latest Projects</h3>
-            <p>Perfect solutions for digital experience</p>
-
-        </div>
-
-        <div class="cards">
-<a href="https://bikrante.onrender.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
-            <div class="design-card active">
-                <div>
-                    <h3>Bikrente – Smart E-commerce Platform</h3>
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                </div>
-                <p>Bikrente is a full-stack Django web application for product buying with AI chat-bot.
-                    It includes secure login, smart recommendations, product comparison, reviews, and multi-payment
-                    integration with admin control..</p>
-
+            <div class="skill">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+              >
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="3"
+                  fill="#ff007f"
+                ></rect>
+              </svg>
+              <h4>Design & UI</h4>
+              <p>Pixel-perfect UIs, animation, Figma → code</p>
             </div>
-            </a>
-            <a href="https://github.com/SaugatEDITH/BeamBlaster/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
-            <div class="design-card">
-                <div>
-                    <h3>BeamBlaster – Programmable IR Remote App.</h3>
-                    <i class="fa-solid fa-code"></i>
-                </div>
-                <p>An Android app that turns IR-blaster phones into universal remotes using raw hex codes and Android’s
-                    Consumer IR API.
-                    Supports custom remote creation, legacy device control, and local storage via SQLite.</p>
-
+            <div class="skill">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+              >
+                <circle cx="12" cy="12" r="9" fill="#ff4da6" />
+              </svg>
+              <h4>Backend & infra</h4>
+              <p>Node.js, Express, MongoDB, deployments</p>
             </div>
-            </a>
-            <a href="https://sahayog-j6ns.onrender.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
-            <div class="design-card">
-                <div>
-                    <h3> Sahayog – Online Fundraising System.</h3>
-                    <i class="fa-solid fa-terminal"></i>
-                </div>
-                <p>A Django-based web app that lets users post donation campaigns and receive real-time payments via
-                    Esewa and PayPal.
-                    Includes user authentication, campaign dashboards, and a responsive frontend for smooth user
-                    experience.</p>
+          </div>
+        </section>
 
-            </div>
-            </a>
-            <a href="https://college-ubz8.onrender.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
+        <section id="projects">
+          <h2 style="color: var(--hot-pink-2); margin: 0 0 18px">
+            Selected Projects
+          </h2>
+          <div class="projects">
+            <article class="project panel" tabindex="0">
+              <h3>E‑commerce Platform</h3>
+              <p style="color: var(--muted)">
+                Full‑stack product platform with secure auth, cart, and admin
+                dashboards.
+              </p>
+              <div
+                style="margin-top: 10px; color: var(--muted); font-size: 0.9rem"
+              >
+                Tech: Django, React, Stripe
+              </div>
+            </article>
+            <article class="project panel" tabindex="0">
+              <h3>BeamBlaster (Mobile)</h3>
+              <p style="color: var(--muted)">
+                IR remote app for Android with programmable remotes and local
+                storage.
+              </p>
+              <div
+                style="margin-top: 10px; color: var(--muted); font-size: 0.9rem"
+              >
+                Tech: Java, Android
+              </div>
+            </article>
+            <article class="project panel" tabindex="0">
+              <h3>Sahayog</h3>
+              <p style="color: var(--muted)">
+                Crowdfunding platform with real‑time payments and dashboards.
+              </p>
+              <div
+                style="margin-top: 10px; color: var(--muted); font-size: 0.9rem"
+              >
+                Tech: Django, PayPal, Esewa
+              </div>
+            </article>
+          </div>
+        </section>
 
-            <div class="design-card">
-                <div>
-                    <h3>
-                        College Web App Project
-                    </h3>
-                    <i class="fa-solid fa-terminal"></i>
-                </div>
-                <p>A Django-based multi-role platform featuring admin and teacher dashboards.
-                    Includes blogs, gallery, notice board, resource sharing, and online admission forms.
-                    Designed to streamline college management..</p>
-            </div>
-            </a>
-        </div>
-
-
-        </div>
-        <div class="image-container">
-            <div class="body-part-2">
-                <div class="container">
-
-                    <div class="svg-animation">
-                        <img src="assets/project.svg">
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <section id="skill">
-        <div class="heading-container">
-            <h3 class="section-heading">Skills</h3>
-        </div>
-        <div class="image-container">
-            <div class="body-part-2">
-                <div class="container">
-
-                    <div class="svg-animation">
-                        <img src="assets/skill.svg">
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <div class="cards-container">
-            <div class="cards">
-
-                <div class="design-card active">
-                    <div>
-                        <h3>Cybersecurity</h3>
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <p>Threat Detection • Network Security • Cybersecurity Architecture • Ethical Hacking • Social Engineering • Information Security Management System (ISMS) • IT Audit • IT Security Assessments • Penetration Testing</p>
-
-                </div>
-                <div class="design-card">
-                    <div>
-                        <h3>Web Development</h3>
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <p>Java • Python • SQL • Full-Stack Development • JavaScript • HTML • CSS • Front-End Development • PHP • C#</p>
-
-                </div>
-                <div class="design-card">
-                    <div>
-                        <h3>Others</h3>
-                        <i class="fa-solid fa-terminal"></i>
-                    </div>
-                    <p>Adobe Photoshop • Computer Science • Software Development • English • Project Management • Engineering • Communication • Training • Leadership • Marketing • Customer Service • Microsoft Office</p>
-
-                </div>
-
-            </div>
-        </div>
-
-        </div>
-
-    </section>
-
-    <section id="footer">
-        <div class="footer-left">
-            <form id="contactForm">
-                <h2>Let's make something amazing together</h2>
-
-                <div class="email-form">
-
-                    <h2>Start by <span>saying hi</span></h2>
-
-                    <input title="Enter valid name!" pattern="[A-Za-z]{3,}(?:\s[A-Za-z]+){0,2}" type="text" name="name"
-                        id="name" placeholder="Your name" required>
-                    <input title="Enter valid email!" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" type="email" name="email"
-                        id="email" placeholder="Email Address" required>
-                    <div>
-                        <input title="Enter valid phone number!" type="tel" name="phone-number" id="phone-number"
-                            placeholder="Phone number" pattern="(97|98)\d{7,8}" required>
-                        <button type="submit">Send</button>
-                    </div>
+        <section id="contact">
+          <h2 style="color: var(--hot-pink-2); margin: 0 0 18px">Contact</h2>
+          <div class="contact-grid">
+            <form
+              id="contactForm"
+              class="panel"
+              onsubmit="return handleSubmit(event)"
+            >
+              <input name="name" placeholder="Your name" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email address"
+                required
+              />
+              <input name="subject" placeholder="Subject" />
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project"
+                required
+              ></textarea>
+              <button type="submit">Send message</button>
+              <div
+                id="formMsg"
+                style="margin-top: 10px; color: var(--muted)"
+              ></div>
             </form>
+            <aside class="panel">
+              <h3 style="margin-top: 0">Let's collaborate</h3>
+              <p style="color: var(--muted)">
+                Email:
+                <a href="mailto:ashok@ashokgiri.com.np"
+                  >ashok@ashokgiri.com.np</a
+                >
+              </p>
+              <p style="color: var(--muted)">
+                GitHub:
+                <a href="https://github.com/ashokgiriii" target="_blank"
+                  >github.com/ashokgiriii</a
+                >
+              </p>
+              <p style="color: var(--muted)">Location: Hetauda, Nepal</p>
+            </aside>
+          </div>
+        </section>
+      </main>
 
-
-            <div id="responseMessage" style="color:red;height: 20px;"></div>
+      <footer>
+        <div>
+          © <strong>Ashok Giri</strong> —
+          <span style="color: var(--muted)">ashokgiri.com.np</span>
         </div>
-
-        <div class="footer-title">
-            <h3 class="title-first-name">
-                Saugat
-            </h3>
-            <h3 class="title-last-name">
-                Pokharel
-            </h3>
+        <div style="display: flex; gap: 12px">
+          <a href="https://www.linkedin.com/in/ashokgiridev/" target="_blank"
+            >LinkedIn</a
+          >
+          <a href="https://github.com/ashokgiriii" target="_blank">GitHub</a>
         </div>
-        </div>
-        <div class="footer-right">
-            <div class="footer-email-intro">
-                <p>Information</p>
-                <h6>Somewhere, Only U Know </h6>
-                <h3>phoenix@sautaboy.com.np</h3>
-            </div>
-            <div class="footer-nav-menu">
-                <ul class="footer-menu">
-                    <li><a class="profile-card-active" href="#aboutme"> About </a></li>
-                    <li><a class="profile-card-active" href="#introduction">Works</a></li>
-                    <li><a class="profile-card-active" href="#skill">Skills</a></li>
-
-                </ul>
-            </div>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/saugat-pokharel-63390323a/" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/SaugatEDITH/" target="_blank">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-
-
-                <a href="https://www.instagram.com/saugatedith/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-            </div>
-        </div>
-
-    </section>
-
+      </footer>
     </div>
-
-    <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> -->
-    <script src="./script.js"></script>
-    <!-- Load library from the CDN -->
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-    <!-- Setup and start animation! -->
-    <script>
-        var typed = new Typed('#element', {
-            strings: ['Programmer.', 'Fullstack Dev.', 'Sec Enthusiast'],
-            typeSpeed: 100,
-            loop: true
-        });
-    </script>
-
-    <script>
-        document.querySelector(".ri-menu-line").addEventListener("click", function (e) {
-            document.querySelector("#header").classList.toggle("open");
-            e.target.classList.toggle("ri-menu-line");
-            e.target.classList.toggle("ri-close-line");
-        });
-
-        document.querySelectorAll(".a-navlink").forEach((a) => {
-            a.addEventListener('click', () => {
-                document.querySelector("#header").classList.toggle("open");
-                document.querySelector(".ri-close-line").classList.toggle("ri-close-line");
-                document.querySelector(".sautaboy").classList.add("ri-menu-line");
-            });
-        });
-
-        // Three.js CyberSec Background
-        const canvas = document.getElementById('cybersec-canvas');
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 50;
-
-        // Hexagon Grid Setup
-        const hexagonGeometry = new THREE.CircleGeometry(1, 6);
-        const hexagonMaterial = new THREE.MeshBasicMaterial({ color: 0x00b840, wireframe: true }); // Default hacker green
-        const hexagonGrid = new THREE.Group();
-
-        const hexagonRadius = 2.2;
-        const hexagonHeight = Math.sqrt(3) * hexagonRadius;
-
-        for (let x = -10; x < 10; x++) {
-            for (let y = -10; y < 10; y++) {
-                const hexagon = new THREE.Mesh(hexagonGeometry, hexagonMaterial);
-                hexagon.position.x = x * hexagonRadius * 1.5;
-                hexagon.position.y = y * hexagonHeight + (x % 2) * hexagonHeight / 2;
-                hexagonGrid.add(hexagon);
-            }
-        }
-
-        scene.add(hexagonGrid);
-
-        // Background Particles (CyberSec Floating Dots)
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 5000;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 200;
-        }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.5,
-            color: 0x00ff00, // Green glow effect
-            transparent: true,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate Hexagon Grid
-            hexagonGrid.rotation.y += 0.002;
-
-            // Rotate Floating Particles
-            particlesMesh.rotation.y += 0.002;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Mouse Interaction - Subtle Glow Effect
-        document.addEventListener('mousemove', (event) => {
-            const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-            hexagonGrid.rotation.x = mouseY * 0.5;
-            hexagonGrid.rotation.y = mouseX * 0.5;
-
-            // Subtle glow effect when hovering over hexagons
-            hexagonGrid.children.forEach(hexagon => {
-                const distance = Math.sqrt(Math.pow(mouseX * 20 - hexagon.position.x, 2) + Math.pow(mouseY * 20 - hexagon.position.y, 2));
-                if (distance < 3) {
-                    hexagon.material.color.set(0x00ff55); // Slightly brighter green on hover
-                } else {
-                    hexagon.material.color.set(0x00b840); // Default cyber green
-                }
-            });
-        });
-
-        // Resize Handling
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
-
-</body>
-<script src="script.js"></script>
-</body>
-
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
