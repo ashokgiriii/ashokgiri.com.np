@@ -1,0 +1,207 @@
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #000, #000, #000);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e2e8f0;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  overflow: hidden;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.sidebar {
+  background: linear-gradient(135deg, #020404, #000, #010101);
+
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  padding: 2rem;
+}
+
+.section-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(243, 244, 246, 0.15);
+  color: #e2e8f0;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin: 0.25rem 0.4rem 0.25rem 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-pill:hover {
+  background-color: orange;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-accent {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.header-accent:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+  border-radius: 4px;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgb(241, 165, 99);
+  margin: 0 auto 1.5rem;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+
+  /* 🔥 Add this line to start the glow animation */
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+/* Hover spin stays the same */
+.profile-img:hover {
+  box-shadow: 0 4px 20px rgb(254, 254, 254);
+}
+
+/* 🌟 Continuous glowing animation */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px #f1a56390;
+  }
+  50% {
+    box-shadow: 0 0 25px #f1a56390;
+  }
+  100% {
+    box-shadow: 0 0 10px #f1a56390;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.contact-icon {
+  color: #818cf8;
+  min-width: 20px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-icon {
+  color: #818cf8;
+  margin-right: 0.5rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  height: 12px;
+  width: 12px;
+  background: #6366f1;
+  border-radius: 50%;
+}
+
+.timeline-item:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 17px;
+  height: calc(100% - 17px);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item:last-child:after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 1rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}

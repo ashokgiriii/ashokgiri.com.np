@@ -1,440 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Ashok Giri — Frontend Developer</title>
-    <meta
-      name="description"
-      content="Portfolio of Ashok Giri — Frontend developer (React, Next.js, TypeScript, Tailwind, Node, MongoDB)."
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashok Giri | sautaboy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Added: ensure all color variables exist and text is visible -->
-    <style>
-      :root {
-        /* cohesive palette (used by the page and inline styles) */
-        --hot-pink: #ff6b35; /* warm primary */
-        --hot-pink-2: #00d4d4; /* teal accent */
-        --accent-1: #ff6b35;
-        --accent-2: #00d4d4;
-        --muted: #cfc7c0;
-        --glass: rgba(255, 107, 53, 0.06);
-      }
-
-      /* Make sure body text is always readable */
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      li,
-      a,
-      label {
-        color: #e9e7e4 !important;
-      }
-
-      /* Nav and subtle text */
-      nav a {
-        color: var(--muted) !important;
-      }
-      .lead,
-      .panel p,
-      .skill p,
-      .project p {
-        color: var(--muted) !important;
-      }
-
-      /* Ensure inputs and textareas text visible */
-      input,
-      textarea {
-        color: #e9e7e4 !important;
-        background-color: #0b0b0d !important;
-      }
-
-      /* Buttons / tags use the palette variables */
-      .cta {
-        background: linear-gradient(
-          90deg,
-          var(--accent-1),
-          var(--accent-2)
-        ) !important;
-        color: #081016 !important;
-      }
-      .skill h4 {
-        color: var(--accent-2) !important;
-      }
-      .project h3 {
-        color: var(--accent-1) !important;
-      }
-
-      /* Respect reduced motion while keeping visibility */
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
-        }
-      }
-    </style>
+    <!-- d -->
+    <link
+      rel="shortcut icon"
+      href="/images/aboutme-banner.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <!-- interactive logo SVG -->
+
+  <body class="p-0 md:p-8">
+    <div class="max-w-6xl w-full glass-panel">
+      <div class="grid-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
           <img
-            height="50px"
-            width="50px"
-            style="border: 1px solid white; border-radius: 50px"
-            src="assets/logo.jpg"
+            src="/images/img (66).jpg"
             alt="Ashok Giri"
+            class="profile-img"
           />
-          <div>
-            <div class="brand">Ashok Giri</div>
-            <div style="font-size: 12px; color: var(--muted)">
-              Frontend Engineer
+
+          <h1 class="text-2xl font-bold text-center mb-1">Ashok Giri</h1>
+          <p class="text-indigo-300 text-center mb-6">sautaboy</p>
+
+          <div
+            class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-4 rounded-lg mb-6"
+          >
+            <h3 class="font-semibold mb-2 flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2 text-indigo-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              Web Developer
+            </h3>
+            <p class="text-sm text-gray-300">
+              Creating seamless digital experiences with modern web
+              technologies.
+            </p>
+          </div>
+
+          <div class="mb-6">
+            <h2 class="header-accent text-lg font-semibold">Contact</h2>
+            <div class="contact-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="contact-icon h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+              <a href="tel:+9779840038544" class="hover:text-indigo-300"
+                >+977 9840038544</a
+              >
+            </div>
+            <div class="contact-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="contact-icon h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              <a
+                href="mailto:contact@sautaboy.com"
+                class="hover:text-indigo-300"
+                >contact@sautaboy.com</a
+              >
+            </div>
+            <div class="contact-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="contact-icon h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              Hetauda-8, Kamane, Nepal
+            </div>
+            <div class="contact-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="contact-icon h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                />
+              </svg>
+              <a
+                href="https://sautaboy.com"
+                target="_blank"
+                class="hover:text-indigo-300"
+                >sautaboy.com</a
+              >
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h2 class="header-accent text-lg font-semibold">Skills</h2>
+            <div class="mb-4">
+              <h3 class="text-sm font-medium text-gray-300 mb-2">Frontend</h3>
+              <div class="flex flex-wrap">
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                    alt="HTML5"
+                    class="w-4 h-4"
+                  />HTML5</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                    alt="CSS3"
+                    class="w-4 h-4"
+                  />CSS3</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                    alt="JavaScript"
+                    class="w-4 h-4"
+                  />JavaScript</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                    alt="React"
+                    class="w-4 h-4"
+                  />React</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
+                    alt="Tailwind"
+                    class="w-4 h-4"
+                  />Bootstrap</span
+                >
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                    alt="Tailwind"
+                    class="w-4 h-4"
+                  />
+                  Tailwind
+                </span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h3 class="text-sm font-medium text-gray-300 mb-2">Backend</h3>
+              <div class="flex flex-wrap">
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                    alt="Node.js"
+                    class="w-4 h-4"
+                  />Node.js</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                    alt="Express"
+                    class="w-4 h-4 bg-white rounded-full p-0.5"
+                  />Express</span
+                >
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-gray-300 mb-2">Tools</h3>
+              <div class="flex flex-wrap">
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                    alt="MongoDB"
+                    class="w-4 h-4"
+                  />MongoDB</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                    alt="Git"
+                    class="w-4 h-4"
+                  />Git</span
+                >
+                <span class="skill-pill"
+                  ><img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                    alt="VS Code"
+                    class="w-4 h-4"
+                  />VS Code</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-auto">
+            <h2 class="header-accent text-lg font-semibold mb-3">Connect</h2>
+            <div class="flex flex-wrap">
+              <a
+                href="https://www.facebook.com/sautaboy"
+                target="_blank"
+                class="social-link"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
+                  alt="Facebook"
+                  class="w-4 h-4"
+                />Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/sautaboy"
+                target="_blank"
+                class="social-link flex items-center gap-1"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                  alt="Instagram"
+                  class="w-4 h-4"
+                />
+                Instagram
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/sautaboy"
+                target="_blank"
+                class="social-link"
+              >
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                  alt="LinkedIn"
+                  class="w-4 h-4"
+                />LinkedIn
+              </a>
+              <a href="sautaboy cv resume.pdf" download class="social-link">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+                CV
+              </a>
             </div>
           </div>
         </div>
-        <nav aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
 
-      <main>
-        <section class="hero">
-          <div>
-            <div class="eyebrow">Frontend · UI · 3D Web</div>
-            <h1>
-              Hi, I'm
-              <span
-                style="
-                  background: linear-gradient(
-                    90deg,
-                    var(--hot-pink),
-                    var(--hot-pink-2)
-                  );
-                  -webkit-background-clip: text;
-                  background-clip: text;
-                  color: transparent;
-                "
-                >Ashok Giri</span
-              ><br /><small
-                style="font-weight: 500; color: var(--muted); font-size: 0.9rem"
-                >I build polished web apps & delightful interfaces.</small
-              >
-            </h1>
-            <p class="lead">
-              Modern frontend development with React, Next.js, TypeScript and
-              Tailwind. I craft performance‑oriented UI, animations and
-              interactive 3D experiences.
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="mb-8">
+            <h2 class="header-accent text-xl font-bold">
+              Professional Summary
+            </h2>
+            <p class="text-gray-300 leading-relaxed">
+              Results-driven web developer with a strong foundation in both
+              frontend and backend technologies. Experienced in building
+              responsive, dynamic, and user-friendly web applications using
+              modern JavaScript frameworks and libraries. Passionate about
+              creating efficient, scalable solutions with clean code and
+              intuitive user interfaces.
             </p>
-            <div style="margin-top: 18px">
-              <a class="cta" href="#contact">Work with me</a>
-              <a class="secondary" href="#projects">See projects</a>
-            </div>
-            <div style="margin-top: 28px" class="panel">
-              <strong style="display: block">Key technologies</strong>
-              <div
-                style="
-                  display: flex;
-                  gap: 10px;
-                  margin-top: 12px;
-                  flex-wrap: wrap;
-                "
-              >
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="mb-8">
+            <h2 class="header-accent text-xl font-bold mb-4">
+              Experience & Projects
+            </h2>
+
+            <div class="project-card">
+              <h3 class="font-semibold text-lg mb-2 flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="project-icon h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                Around You || Location Based Chat App
+              </h3>
+              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
+                <li>
+                  Connect and chat in real-time with people physically near you
+                  (within 500m radius) based on your GPS location
+                </li>
+                <li>
+                  Experience focused interactions during specific daily windows
+                  (6-9AM, 11AM-3PM, 5-11PM) with automatic message purging
+                  between sessions
+                </li>
+                <li>
+                  Protected signup with OTP verification and privacy-focused
+                  design that doesn't require personal information beyond email
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2">
                 <span
-                  style="
-                    background: var(--glass);
-                    padding: 8px 12px;
-                    border-radius: 999px;
-                    color: var(--hot-pink);
-                    font-weight: 600;
-                  "
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >JavaScript</span
+                >
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >Express</span
+                >
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >MongoDB</span
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <h3 class="font-semibold text-lg mb-2 flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="project-icon h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                Food For All
+              </h3>
+              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
+                <li>
+                  Developed a food donation platform with integrated location
+                  services and real-time notifications
+                </li>
+                <li>
+                  Implemented secure user authentication and donation management
+                  system
+                </li>
+                <li>
+                  Optimized performance for mobile devices with responsive
+                  design principles
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
                   >React</span
                 >
                 <span
-                  style="
-                    background: var(--glass);
-                    padding: 8px 12px;
-                    border-radius: 999px;
-                    color: var(--hot-pink);
-                    font-weight: 600;
-                  "
-                  >Next.js</span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >Node.js</span
                 >
                 <span
-                  style="
-                    background: var(--glass);
-                    padding: 8px 12px;
-                    border-radius: 999px;
-                    color: var(--hot-pink);
-                    font-weight: 600;
-                  "
-                  >TypeScript</span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >MongoDB</span
+                >
+              </div>
+            </div>
+
+            <div class="project-card">
+              <h3 class="font-semibold text-lg mb-2 flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="project-icon h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                Dental Service Portal
+              </h3>
+              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
+                <li>
+                  Created a comprehensive directory for dental clinics with
+                  advanced search filters
+                </li>
+                <li>
+                  Developed appointment scheduling system with calendar
+                  integration
+                </li>
+                <li>Implemented user reviews and rating functionality</li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >JavaScript</span
                 >
                 <span
-                  style="
-                    background: var(--glass);
-                    padding: 8px 12px;
-                    border-radius: 999px;
-                    color: var(--hot-pink);
-                    font-weight: 600;
-                  "
-                  >Tailwind</span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >Express</span
+                >
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >MongoDB</span
                 >
               </div>
             </div>
-          </div>
 
-          <aside class="panel avatar" aria-hidden>
-            <!-- stylized SVG blob that reacts to mouse -->
-            <svg
-              id="hero-blob"
-              viewBox="0 0 600 600"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <linearGradient id="lg" x1="0" x2="1">
-                  <stop offset="0" stop-color="#ff4da6" />
-                  <stop offset="1" stop-color="#ff007f" />
-                </linearGradient>
-                <filter id="goo">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="18"
-                    result="blur"
+            <div class="project-card">
+              <h3 class="font-semibold text-lg mb-2 flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="project-icon h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
-                  <feColorMatrix
-                    in="blur"
-                    mode="matrix"
-                    values="1 0 0 0 0  0 0.5 0 0 0  0 0 0.8 0 0  0 0 0 18 -7"
-                    result="goo"
+                </svg>
+                Bytes Pedia
+              </h3>
+              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
+                <li>
+                  Built an educational platform with course materials and
+                  progress tracking
+                </li>
+                <li>
+                  Implemented user authentication and content management system
+                </li>
+                <li>
+                  Designed interactive learning modules with quizzes and
+                  assessments
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >React</span
+                >
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >Node.js</span
+                >
+                <span
+                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
+                  >Firebase</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div class="mb-8">
+            <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
+
+            <div class="timeline-item">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">
+                  Bachelor of Computer Applications (BCA)
+                </h3>
+                <span
+                  class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full"
+                  >2021 – Present</span
+                >
+              </div>
+              <p class="text-gray-400 text-sm">Tribhuvan University</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">+2 in Computer Science</h3>
+                <span
+                  class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full"
+                  >2019 – 2021</span
+                >
+              </div>
+              <p class="text-gray-400 text-sm">Hetauda School of Management</p>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <div>
+            <h2 class="header-accent text-xl font-bold mb-4">
+              Additional Resources
+            </h2>
+            <div class="flex flex-wrap gap-3">
+              <a href="/gallery.html" class="social-link">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16l4-4a3 3 0 014 0l4 4M4 8h16M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2"
                   />
-                </filter>
-              </defs>
-              <g filter="url(#goo)">
-                <circle cx="300" cy="220" r="120" fill="url(#lg)" />
-                <circle cx="380" cy="320" r="90" fill="url(#lg)" />
-                <circle cx="230" cy="320" r="70" fill="url(#lg)" />
-              </g>
-              <text
-                x="50%"
-                y="54%"
-                text-anchor="middle"
-                fill="#fff"
-                font-family="Inter"
-                font-size="96"
-                font-weight="800"
-              >
-                AG
-              </text>
-            </svg>
-          </aside>
-        </section>
-
-        <section id="about">
-          <div class="panel">
-            <h2 style="margin-top: 0; color: var(--hot-pink-2)">About</h2>
-            <p style="color: var(--muted)">
-              I’m a frontend developer focusing on performant interfaces,
-              accessible component systems and delightful micro‑interactions. I
-              enjoy combining strong design sense with engineering rigor to ship
-              polished experiences.
-            </p>
-            <div
-              style="
-                display: flex;
-                gap: 12px;
-                margin-top: 14px;
-                flex-wrap: wrap;
-              "
-            >
-              <div style="min-width: 160px">
-                <strong>Location</strong>
-                <div style="color: var(--muted)">Kathmandu, Nepal</div>
-              </div>
-              <div style="min-width: 160px">
-                <strong>Experience</strong>
-                <div style="color: var(--muted)">4+ years</div>
-              </div>
-              <div style="min-width: 160px">
-                <strong>Availability</strong>
-                <div style="color: var(--muted)">
-                  Open for freelance & remote roles
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="skills">
-          <h2 style="color: var(--hot-pink-2); margin: 0 0 18px">Skills</h2>
-          <div class="grid-3">
-            <div class="skill">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(#g)"></path>
-              </svg>
-              <h4>Frontend</h4>
-              <p>React, Next.js, TypeScript, Tailwind, CSS-in-JS</p>
-            </div>
-            <div class="skill">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden
-              >
-                <rect
-                  x="3"
-                  y="3"
-                  width="18"
-                  height="18"
-                  rx="3"
-                  fill="#ff007f"
-                ></rect>
-              </svg>
-              <h4>Design & UI</h4>
-              <p>Pixel-perfect UIs, animation, Figma → code</p>
-            </div>
-            <div class="skill">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden
-              >
-                <circle cx="12" cy="12" r="9" fill="#ff4da6" />
-              </svg>
-              <h4>Backend & infra</h4>
-              <p>Node.js, Express, MongoDB, deployments</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="projects">
-          <h2 style="color: var(--hot-pink-2); margin: 0 0 18px">
-            Selected Projects
-          </h2>
-          <div class="projects">
-            <article class="project panel" tabindex="0">
-              <h3>E‑commerce Platform</h3>
-              <p style="color: var(--muted)">
-                Full‑stack product platform with secure auth, cart, and admin
-                dashboards.
-              </p>
-              <div
-                style="margin-top: 10px; color: var(--muted); font-size: 0.9rem"
-              >
-                Tech: Django, React, Stripe
-              </div>
-            </article>
-            <article class="project panel" tabindex="0">
-              <h3>BeamBlaster (Mobile)</h3>
-              <p style="color: var(--muted)">
-                IR remote app for Android with programmable remotes and local
-                storage.
-              </p>
-              <div
-                style="margin-top: 10px; color: var(--muted); font-size: 0.9rem"
-              >
-                Tech: Java, Android
-              </div>
-            </article>
-            <article class="project panel" tabindex="0">
-              <h3>Sahayog</h3>
-              <p style="color: var(--muted)">
-                Crowdfunding platform with real‑time payments and dashboards.
-              </p>
-              <div
-                style="margin-top: 10px; color: var(--muted); font-size: 0.9rem"
-              >
-                Tech: Django, PayPal, Esewa
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="contact">
-          <h2 style="color: var(--hot-pink-2); margin: 0 0 18px">Contact</h2>
-          <div class="contact-grid">
-            <form
-              id="contactForm"
-              class="panel"
-              onsubmit="return handleSubmit(event)"
-            >
-              <input name="name" placeholder="Your name" required />
-              <input
-                name="email"
-                type="email"
-                placeholder="Email address"
-                required
-              />
-              <input name="subject" placeholder="Subject" />
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Tell me about your project"
-                required
-              ></textarea>
-              <button type="submit">Send message</button>
-              <div
-                id="formMsg"
-                style="margin-top: 10px; color: var(--muted)"
-              ></div>
-            </form>
-            <aside class="panel">
-              <h3 style="margin-top: 0">Let's collaborate</h3>
-              <p style="color: var(--muted)">
-                Email:
-                <a href="mailto:ashok@ashokgiri.com.np"
-                  >ashok@ashokgiri.com.np</a
+                </svg>
+                Photo Gallery
+              </a>
+              <a href="/status.html" class="social-link">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-              </p>
-              <p style="color: var(--muted)">
-                GitHub:
-                <a href="https://github.com/ashokgiriii" target="_blank"
-                  >github.com/ashokgiriii</a
-                >
-              </p>
-              <p style="color: var(--muted)">Location: Hetauda, Nepal</p>
-            </aside>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                  />
+                </svg>
+                Status
+              </a>
+            </div>
           </div>
-        </section>
-      </main>
-
-      <footer>
-        <div>
-          © <strong>Ashok Giri</strong> —
-          <span style="color: var(--muted)">ashokgiri.com.np</span>
         </div>
-        <div style="display: flex; gap: 12px">
-          <a href="https://www.linkedin.com/in/ashokgiridev/" target="_blank"
-            >LinkedIn</a
-          >
-          <a href="https://github.com/ashokgiriii" target="_blank">GitHub</a>
-        </div>
-      </footer>
+      </div>
     </div>
-    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>

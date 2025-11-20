@@ -1,0 +1,19 @@
+#!/bin/bash
+# compress.sh - Compress all images in the images/ folder
+
+# Go to images folder
+cd ./images || { echo "images folder not found!"; exit 1; }
+
+# Compress all JPG images
+echo "Compressing JPG images..."
+jpegoptim --max=80 --strip-all *.jpg
+
+# Optional: Resize big images
+echo "Resizing images larger than 1920x1080..."
+mogrify -resize 1920x1080 -quality 80 *.jpg
+
+echo "Compression complete!"
+
+
+
+
