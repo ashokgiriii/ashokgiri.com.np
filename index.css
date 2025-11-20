@@ -24,7 +24,6 @@ body {
 }
 
 .glass-panel {
-  /* solid dark background instead of glass */
   background: linear-gradient(
     135deg,
     #0f0f1870 0%,
@@ -243,11 +242,16 @@ body {
 
   .sidebar {
     padding: 1rem;
+    border-radius: none;
+
     border-right: none;
     border-bottom: 1px solid rgba(255, 140, 0, 0.1);
   }
 
   .main-content {
     padding: 1rem;
+  }
+  .glass-panel {
+    border-radius: 0px;
   }
 }
