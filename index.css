@@ -23,6 +23,15 @@ body {
   color: #e2e8f0;
 }
 
+.redirect-link {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  left: 0;
+}
+
 .glass-panel {
   background: linear-gradient(
     135deg,
@@ -166,6 +175,8 @@ body {
   padding: 1.25rem;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
   border: 1px solid rgba(255, 140, 0, 0.15);
 }
 
