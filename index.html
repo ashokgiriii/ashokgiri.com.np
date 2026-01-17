@@ -3,45 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Ashok Giri | sautaboy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta
+      name="description"
+      content="Ashok Giri (sautaboy) — Web Developer building modern, responsive web apps with React, Node.js, and MongoDB."
+    />
+    <meta name="theme-color" content="#0b1020" />
+
+    <!-- Preconnect for faster font load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="shortcut icon"
-      href="/images/aboutme-banner.png"
-      type="image/x-icon"
-    />
+
+    <link rel="shortcut icon" href="/images/aboutme-banner.png" type="image/x-icon" />
+
+    <!-- Tailwind CDN (ok for portfolio; for best perf use build version later) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="index.css" />
   </head>
 
   <body class="p-0 md:p-8">
-    <canvas id="bg-canvas"></canvas>
-    <div class="max-w-6xl w-full glass-panel">
+    <noscript>
+      <div class="max-w-4xl mx-auto mt-4 p-4 rounded-lg bg-red-500/10 text-red-200 border border-red-500/20">
+        This site works best with JavaScript enabled (background animation + some interactions).
+      </div>
+    </noscript>
+
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <div class="max-w-6xl w-full glass-panel" role="document">
       <div class="grid-layout">
         <!-- Sidebar -->
-        <div class="sidebar">
-          <img
-            src="/images/img (66).jpg"
-            alt="Ashok Giri"
-            class="profile-img"
-          />
+        <aside class="sidebar" aria-label="Profile sidebar">
+          <header class="flex flex-col items-center">
+            <img
+              src="/images/img (66).jpg"
+              alt="Portrait of Ashok Giri"
+              class="profile-img"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="high"
+              width="240"
+              height="240"
+            />
 
-          <h1 class="text-2xl font-bold text-center mb-1">Ashok Giri</h1>
-          <p class="text-indigo-300 text-center mb-6">sautaboy</p>
+            <h1 class="text-2xl font-bold text-center mb-1">Ashok Giri</h1>
+            <p class="text-indigo-300 text-center mb-6">sautaboy</p>
+          </header>
 
-          <div
+          <section
             class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-4 rounded-lg mb-6"
+            aria-label="Role summary"
           >
-            <h3 class="font-semibold mb-2 flex items-center">
+            <h2 class="font-semibold mb-2 flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 mr-2 text-indigo-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -51,15 +78,15 @@
                 />
               </svg>
               Web Developer
-            </h3>
+            </h2>
             <p class="text-sm text-gray-300">
-              Creating seamless digital experiences with modern web
-              technologies.
+              Creating seamless digital experiences with modern web technologies.
             </p>
-          </div>
+          </section>
 
-          <div class="mb-6">
+          <section class="mb-6" aria-label="Contact information">
             <h2 class="header-accent text-lg font-semibold">Contact</h2>
+
             <div class="contact-item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +94,7 @@
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -75,10 +103,11 @@
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                 />
               </svg>
-              <a href="tel:+9779840038544" class="hover:text-indigo-300"
-                >+977 9840038544</a
-              >
+              <a href="tel:+9779840038544" class="hover:text-indigo-300" aria-label="Call Ashok Giri">
+                +977 9840038544
+              </a>
             </div>
+
             <div class="contact-item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +115,7 @@
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -95,11 +125,14 @@
                 />
               </svg>
               <a
-                href="mailto:contact@sautaboy.com"
+                href="mailto:contact@ashokgiri.com.np"
                 class="hover:text-indigo-300"
-                >contact@sautaboy.com</a
+                aria-label="Email contact@ashokgiri.com.np"
               >
+                contact@ashokgiri.com.np
+              </a>
             </div>
+
             <div class="contact-item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -107,6 +140,7 @@
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -121,8 +155,9 @@
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              Hetauda-8, Kamane, Nepal
+              <span>Hetauda-8, Kamane, Nepal</span>
             </div>
+
             <div class="contact-item">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,6 +165,7 @@
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -141,132 +177,189 @@
               <a
                 href="https://sautaboy.com"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="hover:text-indigo-300"
-                >sautaboy.com</a
+                aria-label="Open website sautaboy.com"
               >
+                sautaboy.com
+              </a>
             </div>
-          </div>
+          </section>
 
-          <div class="mb-6">
+          <section class="mb-6" aria-label="Skills">
             <h2 class="header-accent text-lg font-semibold">Skills</h2>
+
             <div class="mb-4">
               <h3 class="text-sm font-medium text-gray-300 mb-2">Frontend</h3>
               <div class="flex flex-wrap">
-                <span class="skill-pill"
-                  ><img
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                    alt="HTML5"
+                    alt=""
                     class="w-4 h-4"
-                  />HTML5</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  HTML5
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                    alt="CSS3"
+                    alt=""
                     class="w-4 h-4"
-                  />CSS3</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  CSS3
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                    alt="JavaScript"
+                    alt=""
                     class="w-4 h-4"
-                  />JavaScript</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  JavaScript
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                    alt="React"
+                    alt=""
                     class="w-4 h-4"
-                  />React</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  React
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
-                    alt="Tailwind"
+                    alt=""
                     class="w-4 h-4"
-                  />Bootstrap</span
-                >
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  Bootstrap
+                </span>
+
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                    alt="Tailwind"
+                    alt=""
                     class="w-4 h-4"
+                    loading="lazy"
+                    decoding="async"
                   />
                   Tailwind
                 </span>
               </div>
             </div>
+
             <div class="mb-4">
               <h3 class="text-sm font-medium text-gray-300 mb-2">Backend</h3>
               <div class="flex flex-wrap">
-                <span class="skill-pill"
-                  ><img
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                    alt="Node.js"
+                    alt=""
                     class="w-4 h-4"
-                  />Node.js</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  Node.js
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                    alt="Express"
+                    alt=""
                     class="w-4 h-4 bg-white rounded-full p-0.5"
-                  />Express</span
-                >
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  Express
+                </span>
               </div>
             </div>
+
             <div>
               <h3 class="text-sm font-medium text-gray-300 mb-2">Tools</h3>
               <div class="flex flex-wrap">
-                <span class="skill-pill"
-                  ><img
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                    alt="MongoDB"
+                    alt=""
                     class="w-4 h-4"
-                  />MongoDB</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  MongoDB
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                    alt="Git"
+                    alt=""
                     class="w-4 h-4"
-                  />Git</span
-                >
-                <span class="skill-pill"
-                  ><img
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  Git
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                    alt="VS Code"
+                    alt=""
                     class="w-4 h-4"
-                  />VS Code</span
-                >
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  VS Code
+                </span>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div class="mt-auto">
+          <footer class="mt-auto" aria-label="Social links">
             <h2 class="header-accent text-lg font-semibold mb-3">Connect</h2>
+
             <div class="flex flex-wrap">
               <a
                 href="https://www.facebook.com/sautaboy"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="social-link"
+                aria-label="Open Facebook"
               >
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-                  alt="Facebook"
+                  alt=""
                   class="w-4 h-4"
-                />Facebook
+                  loading="lazy"
+                  decoding="async"
+                />
+                Facebook
               </a>
+
               <a
-                href="https://www.instagram.com/sautaboy"
+                href="https://www.instagram.com/sabdajaaal"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="social-link flex items-center gap-1"
+                aria-label="Open Instagram"
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                  alt="Instagram"
+                  alt=""
                   class="w-4 h-4"
+                  loading="lazy"
+                  decoding="async"
                 />
                 Instagram
               </a>
@@ -274,21 +367,28 @@
               <a
                 href="https://www.linkedin.com/in/ashokgiridev"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="social-link"
+                aria-label="Open LinkedIn"
               >
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                  alt="LinkedIn"
+                  alt=""
                   class="w-4 h-4"
-                />LinkedIn
+                  loading="lazy"
+                  decoding="async"
+                />
+                LinkedIn
               </a>
-              <a href="resume.pdf" download class="social-link">
+
+              <a href="resume.pdf" download class="social-link" aria-label="Download CV">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="w-4 h-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -300,56 +400,37 @@
                 CV
               </a>
 
-              <a href="/gallery.html" class="social-link">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16l4-4a3 3 0 014 0l4 4M4 8h16M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2"
-                  />
-                </svg>
-                Photo Gallery
-              </a>
             </div>
-          </div>
-        </div>
+          </footer>
+        </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
-          <div class="mb-8">
-            <h2 class="header-accent text-xl font-bold">
-              Professional Summary
-            </h2>
+        <main class="main-content" aria-label="Main content">
+          <section class="mb-8" aria-label="Professional summary">
+            <h2 class="header-accent text-xl font-bold">Professional Summary</h2>
             <p class="text-gray-300 leading-relaxed">
-              Results-driven web developer with a strong foundation in both
-              frontend and backend technologies. Experienced in building
-              responsive, dynamic, and user-friendly web applications using
-              modern JavaScript frameworks and libraries. Passionate about
-              creating efficient, scalable solutions with clean code and
+              Results-driven web developer with a strong foundation in both frontend and backend technologies.
+              Experienced in building responsive, dynamic, and user-friendly web applications using modern JavaScript
+              frameworks and libraries. Passionate about creating efficient, scalable solutions with clean code and
               intuitive user interfaces.
             </p>
-          </div>
+          </section>
 
-          <div class="section-divider"></div>
+          <div class="section-divider" role="separator" aria-hidden="true"></div>
 
-          <div class="mb-8">
-            <h2 class="header-accent text-xl font-bold mb-4">
-              Experience & Projects
-            </h2>
+          <section class="mb-8" aria-label="Experience and projects">
+            <h2 class="header-accent text-xl font-bold mb-4">Experience & Projects</h2>
 
-            <div class="project-card">
+            <!-- Project 1 -->
+            <article class="project-card">
               <a
                 class="redirect-link"
                 href="https://tweetnepal-sr0s.onrender.com/"
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Food For All project"
               ></a>
+
               <h3 class="font-semibold text-lg mb-2 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -357,6 +438,7 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -367,37 +449,30 @@
                 </svg>
                 Food For All
               </h3>
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>
-                  Developed a food donation platform with integrated location
-                  services and real-time notifications
-                </li>
-                <li>
-                  Implemented secure user authentication and donation management
-                  system
-                </li>
-                <li>
-                  Optimized performance for mobile devices with responsive
-                  design principles
-                </li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >React</span
-                >
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >Node.js</span
-                >
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >MongoDB</span
-                >
-              </div>
-            </div>
 
-            <div class="project-card">
+              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
+                <li>Developed a food donation platform with integrated location services and real-time notifications.</li>
+                <li>Implemented secure user authentication and donation management system.</li>
+                <li>Optimized performance for mobile devices with responsive design principles.</li>
+              </ul>
+
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Node.js</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card">
+              <a
+                class="redirect-link"
+                href="https://tweetnepal-sr0s.onrender.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Tweet Nepal project"
+              ></a>
+
               <h3 class="font-semibold text-lg mb-2 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -405,6 +480,7 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -415,42 +491,22 @@
                 </svg>
                 Tweet Nepal
               </h3>
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <a
-                  class="redirect-link"
-                  href="https://tweetnepal-sr0s.onrender.com/"
-                  target="_blank"
-                ></a>
-                <li>
-                  A platform to share your thoughts, post notes, read others’
-                  updates, and join conversations through comments.
-                </li>
-                <li>
-                  Share your tweets and notes, explore what others are posting,
-                  and interact with a community that values ideas.
-                </li>
-                <li>
-                  Post, read, and comment — a simple social space for tweeting,
-                  sharing notes, and connecting with others.
-                </li>
-              </ul>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >JavaScript</span
-                >
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >Express</span
-                >
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >MongoDB</span
-                >
-              </div>
-            </div>
 
-            <div class="project-card">
+              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
+                <li>A platform to share thoughts, post notes, read others’ updates, and join conversations through comments.</li>
+                <li>Share your tweets and notes, explore what others are posting, and interact with a community that values ideas.</li>
+                <li>Post, read, and comment — a simple social space for tweeting, sharing notes, and connecting with others.</li>
+              </ul>
+
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">JavaScript</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Express</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card">
               <h3 class="font-semibold text-lg mb-2 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -458,6 +514,7 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -468,50 +525,30 @@
                 </svg>
                 Bytes Pedia
               </h3>
+
               <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>
-                  Built an educational platform with course materials and
-                  progress tracking
-                </li>
-                <li>
-                  Implemented user authentication and content management system
-                </li>
-                <li>
-                  Designed interactive learning modules with quizzes and
-                  assessments
-                </li>
+                <li>Built an educational platform with course materials and progress tracking.</li>
+                <li>Implemented user authentication and content management system.</li>
+                <li>Designed interactive learning modules with quizzes and assessments.</li>
               </ul>
+
               <div class="mt-3 flex flex-wrap gap-2">
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >React</span
-                >
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >Node.js</span
-                >
-                <span
-                  class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full"
-                  >Firebase</span
-                >
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Node.js</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Firebase</span>
               </div>
-            </div>
-          </div>
+            </article>
+          </section>
 
-          <div class="section-divider"></div>
+          <div class="section-divider" role="separator" aria-hidden="true"></div>
 
-          <div class="mb-8">
+          <section class="mb-8" aria-label="Education">
             <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
 
             <div class="timeline-item">
               <div class="flex justify-between items-start">
-                <h3 class="font-semibold">
-                  Bachelor of Computer Applications (BCA)
-                </h3>
-                <span
-                  class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full"
-                  >2021 – Present</span
-                >
+                <h3 class="font-semibold">Bachelor of Computer Applications (BCA)</h3>
+                <span class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">2021 – Present</span>
               </div>
               <p class="text-gray-400 text-sm">Tribhuvan University</p>
             </div>
@@ -519,46 +556,19 @@
             <div class="timeline-item">
               <div class="flex justify-between items-start">
                 <h3 class="font-semibold">+2 in Computer Science</h3>
-                <span
-                  class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full"
-                  >2019 – 2021</span
-                >
+                <span class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">2019 – 2021</span>
               </div>
               <p class="text-gray-400 text-sm">Hetauda School of Management</p>
             </div>
-          </div>
+          </section>
 
-          <div class="section-divider"></div>
 
-          <div>
-            <h2 class="header-accent text-xl font-bold mb-4">
-              Additional Resources
-            </h2>
-            <div class="flex flex-wrap gap-3">
-              <a href="/gallery.html" class="social-link">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16l4-4a3 3 0 014 0l4 4M4 8h16M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2"
-                  />
-                </svg>
-                Photo Gallery
-              </a>
-              <div></div>
-            </div>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
-    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
-    <script src="script.js"></script>
+
+    <!-- Defer JS so content loads first -->
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

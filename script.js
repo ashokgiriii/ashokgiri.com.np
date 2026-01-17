@@ -2,10 +2,15 @@
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
 
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isSmallScreen = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    const MAX_FPS = isSmallScreen ? 30 : 45;
+
     // Renderer
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, isSmallScreen ? 1.25 : 1.5);
+    renderer.setPixelRatio(pixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight, false);
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.setClearColor(0x000000, 0);
 
@@ -77,12 +82,12 @@
         return new THREE.Points(geo, mat);
     }
 
-    const starsFar = makeStarfield(1400, 300, 1500, 0.8, 0.85);
-    const starsNear = makeStarfield(800, 80, 300, 1.4, 0.95);
+    const starsFar = makeStarfield(isSmallScreen ? 800 : 1200, 300, 1500, 0.8, 0.85);
+    const starsNear = makeStarfield(isSmallScreen ? 420 : 700, 80, 300, 1.2, 0.95);
     world.add(starsFar, starsNear);
 
     // === Sun with glow ===
-    const sunGeo = new THREE.SphereGeometry(14, 64, 64);
+    const sunGeo = new THREE.SphereGeometry(14, 40, 40);
     const sunMat = new THREE.MeshStandardMaterial({
         color: COLORS.sun,
         emissive: 0xff7a00,
@@ -151,7 +156,7 @@
     ];
 
     planetSpecs.forEach((spec, idx) => {
-        const geo = new THREE.SphereGeometry(spec.size, 32, 32);
+        const geo = new THREE.SphereGeometry(spec.size, 24, 24);
         const mat = new THREE.MeshStandardMaterial({
             color: spec.color,
             emissive: spec.color,
@@ -179,7 +184,7 @@
 
         // Optional ring (Saturn)
         if (spec.ring) {
-            const ringGeo = new THREE.RingGeometry(spec.size * 1.5, spec.size * 2.8, 64);
+            const ringGeo = new THREE.RingGeometry(spec.size * 1.5, spec.size * 2.8, 48);
             const ringMat = new THREE.MeshBasicMaterial({
                 color: 0xffd8a6,
                 transparent: true,
@@ -194,7 +199,7 @@
 
         // Optional moon (Earth's moon)
         if (spec.moon) {
-            const moonGeo = new THREE.SphereGeometry(0.5, 16, 16);
+            const moonGeo = new THREE.SphereGeometry(0.5, 12, 12);
             const moonMat = new THREE.MeshStandardMaterial({
                 color: COLORS.moon,
                 roughness: 0.85,
@@ -217,8 +222,8 @@
     const orbitsGroup = new THREE.Group();
     planetSpecs.forEach(spec => {
         const points = [];
-        for (let i = 0; i <= 128; i++) {
-            const angle = (i / 128) * Math.PI * 2;
+        for (let i = 0; i <= 96; i++) {
+            const angle = (i / 96) * Math.PI * 2;
             points.push(new THREE.Vector3(Math.cos(angle) * spec.distance, 0, Math.sin(angle) * spec.distance));
         }
         const geo = new THREE.BufferGeometry().setFromPoints(points);
@@ -237,14 +242,20 @@
     }, { passive: true });
 
     // === Animation loop ===
-    const clock = new THREE.Clock();
-    let lastTime = 0;
+    let lastRender = 0;
+    let isVisible = true;
 
-    function animate() {
+    document.addEventListener('visibilitychange', () => {
+        isVisible = document.visibilityState === 'visible';
+        if (isVisible) lastRender = 0;
+    });
+
+    function animate(now) {
         requestAnimationFrame(animate);
-        const t = clock.getElapsedTime();
-        const dt = t - lastTime;
-        lastTime = t;
+        if (!isVisible || prefersReducedMotion) return;
+        const t = now * 0.001;
+        if (t - lastRender < 1 / MAX_FPS) return;
+        lastRender = t;
 
         // Sun pulse
         const sunPulse = 1 + Math.sin(t * 1.8) * 0.05 + Math.sin(t * 4.2) * 0.02;
@@ -294,17 +305,18 @@
         renderer.render(scene, camera);
     }
 
-    animate();
+    if (prefersReducedMotion) {
+        renderer.render(scene, camera);
+    } else {
+        animate(performance.now());
+    }
 
     // === Resize handler ===
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        const nextPixelRatio = Math.min(window.devicePixelRatio || 1, isSmallScreen ? 1.25 : 1.5);
+        renderer.setPixelRatio(nextPixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight, false);
     }, { passive: true });
-
-    // === Respect reduced motion preference ===
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        renderer.setAnimationLoop(null);
-    }
 })();

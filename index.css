@@ -8,6 +8,11 @@
   z-index: -1;
   display: block;
   pointer-events: none;
+  contain: strict;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -21,6 +26,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #e2e8f0;
+  overflow-x: hidden;
 }
 
 .redirect-link {
@@ -178,6 +184,8 @@ body {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 140, 0, 0.15);
+  content-visibility: auto;
+  contain-intrinsic-size: 220px;
 }
 
 .project-card:hover {
@@ -218,6 +226,8 @@ body {
   padding-left: 2rem;
   margin-bottom: 1.5rem;
   color: #d4d4e4;
+  content-visibility: auto;
+  contain-intrinsic-size: 90px;
 }
 
 .timeline-item:before {
@@ -264,5 +274,21 @@ body {
   }
   .glass-panel {
     border-radius: 0px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .profile-img {
+    animation: none;
+  }
+
+  .skill-pill,
+  .project-card,
+  .social-link {
+    transition: none;
   }
 }
