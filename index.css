@@ -171,6 +171,141 @@ body {
   min-width: 20px;
 }
 
+.message-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 140, 0, 0.35);
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(255, 199, 0, 0.2));
+  color: #ffd98a;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.message-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 199, 0, 0.6);
+  box-shadow: 0 10px 22px rgba(255, 140, 0, 0.2);
+}
+
+.message-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 40;
+}
+
+.message-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.message-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 8, 16, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.message-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 420px);
+  background: linear-gradient(135deg, #0f1220, #1a1f33);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  padding: 1.5rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.message-modal.is-open .message-modal__panel {
+  transform: translateY(0) scale(1);
+}
+
+.message-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.message-modal__header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffd98a;
+}
+
+.message-modal__close {
+  background: transparent;
+  border: none;
+  color: #ffd98a;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.message-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.message-form__field {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+}
+
+.message-form__field input,
+.message-form__field textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 140, 0, 0.2);
+  background: rgba(9, 11, 20, 0.8);
+  color: #e2e8f0;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+}
+
+.message-form__field input:focus,
+.message-form__field textarea:focus {
+  outline: none;
+  border-color: rgba(255, 199, 0, 0.7);
+  box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
+}
+
+.message-submit {
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(135deg, #ff8c00, #ffc700);
+  color: #0b0d16;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 25px rgba(255, 140, 0, 0.3);
+}
+
+.message-form__note {
+  font-size: 0.75rem;
+  color: #9aa3b2;
+  margin-top: -0.3rem;
+}
+
 .project-card {
   background: linear-gradient(
     135deg,

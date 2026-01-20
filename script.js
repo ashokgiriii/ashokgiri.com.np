@@ -320,3 +320,56 @@
         renderer.setSize(window.innerWidth, window.innerHeight, false);
     }, { passive: true });
 })();
+
+(function () {
+    const modal = document.getElementById('message-modal');
+    const openButton = document.getElementById('open-message');
+    const form = document.getElementById('message-form');
+
+    if (!modal || !openButton || !form) return;
+
+    const nameInput = document.getElementById('message-name');
+    const emailInput = document.getElementById('message-email');
+    const messageInput = document.getElementById('message-body');
+    const closeTargets = modal.querySelectorAll('[data-close]');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    const openModal = () => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (nameInput) nameInput.focus();
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    openButton.addEventListener('click', openModal);
+    closeTargets.forEach((target) => target.addEventListener('click', closeModal));
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const message = messageInput ? messageInput.value.trim() : '';
+        if (submitButton) submitButton.disabled = true;
+
+        const subject = `Portfolio message from ${name || 'a visitor'}`;
+        const body = `Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}\n\n${message || ''}`;
+        const mailto = `mailto:contact@ashokgiri.com.np?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailto;
+        form.reset();
+        if (submitButton) submitButton.disabled = false;
+        closeModal();
+    });
+})();

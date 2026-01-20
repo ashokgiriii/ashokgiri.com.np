@@ -184,6 +184,15 @@
                 sautaboy.com
               </a>
             </div>
+
+            <div class="mt-4">
+              <button type="button" class="message-button" id="open-message" aria-controls="message-modal">
+                Message Me
+              </button>
+              <p class="text-xs text-gray-400 mt-2">
+                Opens a quick message form and sends via your email app.
+              </p>
+            </div>
           </section>
 
           <section class="mb-6" aria-label="Skills">
@@ -564,6 +573,42 @@
 
 
         </main>
+      </div>
+    </div>
+
+    <div class="message-modal" id="message-modal" aria-hidden="true" role="dialog" aria-labelledby="message-title">
+      <div class="message-modal__backdrop" data-close></div>
+      <div class="message-modal__panel" role="document">
+        <div class="message-modal__header">
+          <h2 id="message-title">Send a message</h2>
+          <button type="button" class="message-modal__close" aria-label="Close message form" data-close>
+            &times;
+          </button>
+        </div>
+        <form class="message-form" id="message-form">
+          <label class="message-form__field">
+            <span>Your name</span>
+            <input type="text" name="name" id="message-name" required placeholder="Your full name" />
+          </label>
+          <label class="message-form__field">
+            <span>Your email</span>
+            <input type="email" name="email" id="message-email" required placeholder="you@example.com" />
+          </label>
+          <label class="message-form__field">
+            <span>Your message</span>
+            <textarea
+              name="message"
+              id="message-body"
+              rows="5"
+              required
+              placeholder="Tell me about your project or question..."
+            ></textarea>
+          </label>
+          <button type="submit" class="message-submit">Send Message</button>
+          <p class="message-form__note">
+            This uses your device email app to deliver the message.
+          </p>
+        </form>
       </div>
     </div>
 
