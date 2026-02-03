@@ -1,619 +1,427 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Ashok Giri | sautaboy</title>
+    <meta name="color-scheme" content="dark" />
+    <title>Ashok Giri — Portfolio</title>
+    <link rel="stylesheet" href="index.css" />
     <meta
       name="description"
-      content="Ashok Giri (sautaboy) — Web Developer building modern, responsive web apps with React, Node.js, and MongoDB."
+      content="Portfolio of Ashok Giri — Developer. Projects, skills, and contact."
     />
-    <meta name="theme-color" content="#0b1020" />
-
-    <!-- Preconnect for faster font load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+</head>
 
-    <link rel="shortcut icon" href="/images/aboutme-banner.png" type="image/x-icon" />
-
-    <!-- Tailwind CDN (ok for portfolio; for best perf use build version later) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="stylesheet" href="index.css" />
-  </head>
-
-  <body class="p-0 md:p-8">
-    <noscript>
-      <div class="max-w-4xl mx-auto mt-4 p-4 rounded-lg bg-red-500/10 text-red-200 border border-red-500/20">
-        This site works best with JavaScript enabled (background animation + some interactions).
+  <body>
+    <div class="noise"></div>
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+    <div class="skeletonOverlay" id="skeleton">
+      <div class="skeletonWrap">
+        <div class="skeletonBar wide"></div>
+        <div class="skeletonBar"></div>
+        <div class="skeletonGrid">
+          <div class="skeletonCard"></div>
+          <div class="skeletonCard"></div>
+          <div class="skeletonCard"></div>
+        </div>
+        <div class="skeletonBar wide"></div>
+        <div class="skeletonGrid two">
+          <div class="skeletonCard tall"></div>
+          <div class="skeletonCard tall"></div>
+        </div>
       </div>
-    </noscript>
+    </div>
 
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo">
+            <img src="images/me.png" alt="Ashok Giri" />
+          </div>
+          <div>
+            <b>Ashok Giri</b>
+            <span>Web Developer • sautaboy</span>
+          </div>
+        </div>
 
-    <div class="max-w-6xl w-full glass-panel" role="document">
-      <div class="grid-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar" aria-label="Profile sidebar">
-          <header class="flex flex-col items-center">
-            <img
-              src="/images/img (66).jpg"
-              alt="Portrait of Ashok Giri"
-              class="profile-img"
-              loading="lazy"
-              decoding="async"
-              fetchpriority="high"
-              width="240"
-              height="240"
-            />
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
 
-            <h1 class="text-2xl font-bold text-center mb-1">Ashok Giri</h1>
-            <p class="text-indigo-300 text-center mb-6">sautaboy</p>
-          </header>
-
-          <section
-            class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-4 rounded-lg mb-6"
-            aria-label="Role summary"
+        <div class="navright">
+          <a class="btn" href="#projects" title="See projects">View Work</a>
+          <a
+            class="btn primary"
+            href="resume.pdf"
+            download
+            title="Download resume"
+            >Download CV</a
           >
-            <h2 class="font-semibold mb-2 flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 mr-2 text-indigo-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
+        </div>
+      </nav>
+
+      <header class="hero" id="top">
+        <div class="heroGrid">
+          <div class="card heroLeft reveal">
+            <div class="kicker">
+              <span class="pill"
+                ><span class="dot"></span> Available for freelance /
+                internships</span
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              Web Developer
-            </h2>
-            <p class="text-sm text-gray-300">
-              Creating seamless digital experiences with modern web technologies.
+              <span class="pill mono">Based in Nepal • Remote friendly</span>
+            </div>
+
+            <h1>
+              Results-driven web developer building modern, responsive web apps
+              <span style="color: rgba(255, 255, 255, 0.65)"
+                >with clean code and intuitive UI.</span
+              >
+            </h1>
+
+            <p class="sub">
+              I’m <b>Ashok</b> (sautaboy) with a strong foundation in frontend
+              and backend technologies. I focus on <b>responsive</b>,
+              <b>user-friendly</b>, and <b>scalable</b> web experiences.
             </p>
-          </section>
 
-          <section class="mb-6" aria-label="Contact information">
-            <h2 class="header-accent text-lg font-semibold">Contact</h2>
-
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-              <a href="tel:+9779840038544" class="hover:text-indigo-300" aria-label="Call Ashok Giri">
-                +977 9840038544
-              </a>
-            </div>
-
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+            <div class="heroActions">
+              <a class="btn primary" href="#contact">Hire / Collaborate</a>
+              <a class="btn" href="#projects">See Projects</a>
               <a
-                href="mailto:contact@ashokgiri.com.np"
-                class="hover:text-indigo-300"
-                aria-label="Email contact@ashokgiri.com.np"
-              >
-                contact@ashokgiri.com.np
-              </a>
-            </div>
-
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <span>Hetauda-8, Kamane, Nepal</span>
-            </div>
-
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c1.657 0 3-4.03 3-9s-1.343-9-3-9m-9 9a9 9 0 019-9"
-                />
-              </svg>
-              <a
-                href="https://sautaboy.com"
+                class="btn"
+                href="https://github.com/"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-indigo-300"
-                aria-label="Open website sautaboy.com"
+                rel="noreferrer"
+                >GitHub</a
               >
-                sautaboy.com
-              </a>
+              <a
+                class="btn"
+                href="https://linkedin.com/"
+                target="_blank"
+                rel="noreferrer"
+                >LinkedIn</a
+              >
             </div>
 
-            <div class="mt-4">
-              <button type="button" class="message-button" id="open-message" aria-controls="message-modal">
-                Message Me
-              </button>
-              <p class="text-xs text-gray-400 mt-2">
-                Opens a quick message form and sends via your email app.
+            <div class="stats">
+              <div class="stat">
+                <b>Full-stack</b>
+                <span>Frontend + backend</span>
+              </div>
+              <div class="stat">
+                <b>Responsive</b>
+                <span>Modern, user-friendly apps</span>
+              </div>
+              <div class="stat">
+                <b>Clean code</b>
+                <span>Scalable solutions</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="card heroRight reveal">
+            <div class="miniCard">
+              <h3>Now</h3>
+              <p>Building modern web apps with React, Node.js, and MongoDB.</p>
+              <ul class="list">
+                <li>
+                  <span>Focus</span><span class="tag">React / Node.js</span>
+                </li>
+                <li>
+                  <span>Style</span><span class="tag">Clean • Responsive</span>
+                </li>
+                <li>
+                  <span>Goal</span><span class="tag">Scalable solutions</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="miniCard">
+              <h3>Highlights</h3>
+              <p>
+                Experienced in building dynamic, user-friendly apps with modern
+                JavaScript frameworks and libraries.
               </p>
             </div>
-          </section>
 
-          <section class="mb-6" aria-label="Skills">
-            <h2 class="header-accent text-lg font-semibold">Skills</h2>
+            <div class="miniCard">
+              <h3>Contact quick</h3>
+              <p class="mono" style="margin-top: 8px">
+                Email: contact@ashokgiri.com.np
+              </p>
+              <p class="mono" style="margin-top: 6px">IG: @sautaboy</p>
+            </div>
+          </aside>
+        </div>
+      </header>
 
-            <div class="mb-4">
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Frontend</h3>
-              <div class="flex flex-wrap">
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  HTML5
-                </span>
+      <section class="card reveal" id="about">
+        <div class="sectionTitle">
+          <h2>About</h2>
+        </div>
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  CSS3
-                </span>
+        <div class="grid2">
+          <p class="aboutText">
+            I am a web developer with strong frontend and backend skills. I
+            build responsive, user-friendly web apps using modern JavaScript
+            tools. I care about clean code and scalable solutions.
+          </p>
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  JavaScript
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  React
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Bootstrap
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Tailwind
-                </span>
+          <div class="aboutSide">
+            <div class="miniCard">
+              <h3>What I bring</h3>
+              <ul class="list">
+                <li>
+                  <span>UI/UX</span><span class="tag">User-friendly</span>
+                </li>
+                <li>
+                  <span>Code</span><span class="tag">Clean & scalable</span>
+                </li>
+                <li><span>Delivery</span><span class="tag">Reliable</span></li>
+                <li>
+                  <span>Communication</span><span class="tag">Clear</span>
+                </li>
+              </ul>
+            </div>
+            <div class="iconCard">
+              <h3>Toolbox</h3>
+              <div class="iconGrid">
+                <div class="iconItem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M4 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  API & Forms
+                </div>
+                <div class="iconItem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M3 5a2 2 0 012-2h6a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm10 4a2 2 0 012-2h4a2 2 0 012 2v10a2 2 0 01-2 2h-4a2 2 0 01-2-2V9z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Layouts
+                </div>
+                <div class="iconItem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M4 6h16v10H4zM6 18h12v2H6z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Dashboards
+                </div>
+                <div class="iconItem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M7 4h10l-1 14H8L7 4zm2 2l.6 10h4.8L15 6H9z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Auth & CRUD
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="mb-4">
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Backend</h3>
-              <div class="flex flex-wrap">
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Node.js
-                </span>
+      <section class="card reveal" id="projects">
+        <div class="sectionTitle">
+          <h2>Projects</h2>
+          <p>Experience & projects.</p>
+        </div>
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                    alt=""
-                    class="w-4 h-4 bg-white rounded-full p-0.5"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Express
-                </span>
-              </div>
+        <div class="projects">
+          <article class="project">
+            <div class="projectTop">
+              <h3>Food For All</h3>
+              <span class="tag">Full-stack</span>
             </div>
-
-            <div>
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Tools</h3>
-              <div class="flex flex-wrap">
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  MongoDB
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Git
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  VS Code
-                </span>
-              </div>
+            <p>
+              Developed a food donation platform with integrated location
+              services and real-time notifications. Implemented secure user
+              authentication and donation management. Optimized performance for
+              mobile devices with responsive design.
+            </p>
+            <div class="meta">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
             </div>
-          </section>
-
-          <footer class="mt-auto" aria-label="Social links">
-            <h2 class="header-accent text-lg font-semibold mb-3">Connect</h2>
-
-            <div class="flex flex-wrap">
+            <div class="projectLinks">
               <a
-                href="https://www.facebook.com/sautaboy"
+                class="link"
+                href="https://tweetnepal-sr0s.onrender.com/"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-                aria-label="Open Facebook"
+                rel="noreferrer"
+                >Live</a
               >
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-                  alt=""
-                  class="w-4 h-4"
-                  loading="lazy"
-                  decoding="async"
-                />
-                Facebook
-              </a>
+              <a class="link" href="#" target="_blank" rel="noreferrer">Code</a>
+            </div>
+          </article>
 
+          <article class="project">
+            <div class="projectTop">
+              <h3>Tweet Nepal</h3>
+              <span class="tag">Web App</span>
+            </div>
+            <p>
+              A platform to share thoughts, post notes, read others’ updates,
+              and join conversations through comments.
+            </p>
+            <div class="meta">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Express</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <div class="projectLinks">
               <a
-                href="https://www.instagram.com/sabdajaaal"
+                class="link"
+                href="https://tweetnepal-sr0s.onrender.com/"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="social-link flex items-center gap-1"
-                aria-label="Open Instagram"
+                rel="noreferrer"
+                >Live</a
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                  alt=""
-                  class="w-4 h-4"
-                  loading="lazy"
-                  decoding="async"
-                />
-                Instagram
-              </a>
+              <a class="link" href="#" target="_blank" rel="noreferrer">Code</a>
+            </div>
+          </article>
 
+          <article class="project">
+            <div class="projectTop">
+              <h3>Bytes Pedia</h3>
+              <span class="tag">Education</span>
+            </div>
+            <p>
+              Built an educational platform with course materials, progress
+              tracking, and interactive learning modules.
+            </p>
+            <div class="meta">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Firebase</span>
+            </div>
+            <div class="projectLinks">
+              <a class="link" href="#" target="_blank" rel="noreferrer"
+                >Preview</a
+              >
+              <a class="link" href="#" target="_blank" rel="noreferrer">Code</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card reveal" id="skills">
+        <div class="sectionTitle">
+          <h2>Skills</h2>
+        </div>
+
+        <div class="skills">
+          <span class="skill html">HTML5</span>
+          <span class="skill css">CSS3</span>
+          <span class="skill javascript">JavaScript</span>
+          <span class="skill react">React</span>
+          <span class="skill bootstrap">Bootstrap</span>
+          <span class="skill tailwind">Tailwind</span>
+          <span class="skill node">Node.js</span>
+          <span class="skill express">Express</span>
+          <span class="skill mongodb">MongoDB</span>
+          <span class="skill git">Git</span>
+          <span class="skill vscode">VS Code</span>
+        </div>
+      </section>
+
+      <section class="card reveal" id="contact">
+        <div class="contactGrid">
+          <div class="miniCard">
+            <h3 class="messageTitle">Message me</h3>
+            <form id="contactForm">
+              <div class="formRow">
+                <input id="name" type="text" placeholder="Your name" required />
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Your email"
+                  required
+                />
+              </div>
+              <input id="subject" type="text" placeholder="Subject" required />
+              <textarea
+                id="message"
+                placeholder="Your message..."
+                required
+              ></textarea>
+
+              <button class="btn primary" type="submit">Send Email</button>
+            </form>
+          </div>
+
+          <div class="miniCard">
+            <h3>Details</h3>
+            <ul class="list">
+              <li>
+                <span>Email</span
+                ><span class="tag mono">contact@ashokgiri.com.np</span>
+              </li>
+              <li>
+                <span>Location</span
+                ><span class="tag">Hetauda-8, Kamane, Nepal</span>
+              </li>
+              <li>
+                <span>Phone</span><span class="tag">+977 9840038544</span>
+              </li>
+            </ul>
+
+            <div
+              style="
+                margin-top: 12px;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+              "
+            >
               <a
+                class="btn social facebook"
+                href="https://www.facebook.com/sautaboy/"
+                target="_blank"
+                rel="noreferrer"
+                >Facebook</a
+              >
+              <a
+                class="btn social instagram"
+                href="https://www.instagram.com/sautaboy"
+                target="_blank"
+                rel="noreferrer"
+                >Instagram</a
+              >
+              <a
+                class="btn social linkedin"
                 href="https://www.linkedin.com/in/ashokgiridev"
                 target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-                aria-label="Open LinkedIn"
+                rel="noreferrer"
+                >LinkedIn</a
               >
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                  alt=""
-                  class="w-4 h-4"
-                  loading="lazy"
-                  decoding="async"
-                />
-                LinkedIn
-              </a>
-
-              <a href="resume.pdf" download class="social-link" aria-label="Download CV">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
-                </svg>
-                CV
-              </a>
-
+              <a class="btn" href="#top">Back to top ↑</a>
             </div>
-          </footer>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content" aria-label="Main content">
-          <section class="mb-8" aria-label="Professional summary">
-            <h2 class="header-accent text-xl font-bold">Professional Summary</h2>
-            <p class="text-gray-300 leading-relaxed">
-              Results-driven web developer with a strong foundation in both frontend and backend technologies.
-              Experienced in building responsive, dynamic, and user-friendly web applications using modern JavaScript
-              frameworks and libraries. Passionate about creating efficient, scalable solutions with clean code and
-              intuitive user interfaces.
-            </p>
-          </section>
-
-          <div class="section-divider" role="separator" aria-hidden="true"></div>
-
-          <section class="mb-8" aria-label="Experience and projects">
-            <h2 class="header-accent text-xl font-bold mb-4">Experience & Projects</h2>
-
-            <!-- Project 1 -->
-            <article class="project-card">
-              <a
-                class="redirect-link"
-                href="https://tweetnepal-sr0s.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Food For All project"
-              ></a>
-
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Food For All
-              </h3>
-
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>Developed a food donation platform with integrated location services and real-time notifications.</li>
-                <li>Implemented secure user authentication and donation management system.</li>
-                <li>Optimized performance for mobile devices with responsive design principles.</li>
-              </ul>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Node.js</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
-              </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-card">
-              <a
-                class="redirect-link"
-                href="https://tweetnepal-sr0s.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Tweet Nepal project"
-              ></a>
-
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Tweet Nepal
-              </h3>
-
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>A platform to share thoughts, post notes, read others’ updates, and join conversations through comments.</li>
-                <li>Share your tweets and notes, explore what others are posting, and interact with a community that values ideas.</li>
-                <li>Post, read, and comment — a simple social space for tweeting, sharing notes, and connecting with others.</li>
-              </ul>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">JavaScript</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Express</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
-              </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-card">
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Bytes Pedia
-              </h3>
-
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>Built an educational platform with course materials and progress tracking.</li>
-                <li>Implemented user authentication and content management system.</li>
-                <li>Designed interactive learning modules with quizzes and assessments.</li>
-              </ul>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Node.js</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Firebase</span>
-              </div>
-            </article>
-          </section>
-
-          <div class="section-divider" role="separator" aria-hidden="true"></div>
-
-          <section class="mb-8" aria-label="Education">
-            <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
-
-            <div class="timeline-item">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">Bachelor of Computer Applications (BCA)</h3>
-                <span class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">2021 – Present</span>
-              </div>
-              <p class="text-gray-400 text-sm">Tribhuvan University</p>
-            </div>
-
-            <div class="timeline-item">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">+2 in Computer Science</h3>
-                <span class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">2019 – 2021</span>
-              </div>
-              <p class="text-gray-400 text-sm">Hetauda School of Management</p>
-            </div>
-          </section>
-
-
-        </main>
-      </div>
-    </div>
-
-    <div class="message-modal" id="message-modal" aria-hidden="true" role="dialog" aria-labelledby="message-title">
-      <div class="message-modal__backdrop" data-close></div>
-      <div class="message-modal__panel" role="document">
-        <div class="message-modal__header">
-          <h2 id="message-title">Send a message</h2>
-          <button type="button" class="message-modal__close" aria-label="Close message form" data-close>
-            &times;
-          </button>
+          </div>
         </div>
-        <form class="message-form" id="message-form">
-          <label class="message-form__field">
-            <span>Your name</span>
-            <input type="text" name="name" id="message-name" required placeholder="Your full name" />
-          </label>
-          <label class="message-form__field">
-            <span>Your email</span>
-            <input type="email" name="email" id="message-email" required placeholder="you@example.com" />
-          </label>
-          <label class="message-form__field">
-            <span>Your message</span>
-            <textarea
-              name="message"
-              id="message-body"
-              rows="5"
-              required
-              placeholder="Tell me about your project or question..."
-            ></textarea>
-          </label>
-          <button type="submit" class="message-submit">Send Message</button>
-          <p class="message-form__note">
-            This uses your device email app to deliver the message.
-          </p>
-        </form>
-      </div>
-    </div>
+      </section>
 
-    <!-- Defer JS so content loads first -->
-    <script src="https://unpkg.com/three@0.152.2/build/three.min.js" defer></script>
-    <script src="script.js" defer></script>
+      <footer>
+        © <span id="year"></span> Ashok Giri
+      </footer>
+    </div>
+  <script src="script.js" defer></script>
   </body>
 </html>
