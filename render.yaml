@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ashokgiri-portfolio
+    runtime: node
+    buildCommand: npm install && npm run build:css
+    startCommand: npm start
+    envVars:
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM
+        value: "Portfolio Contact <noreply@ashokgiri.com.np>"
+      - key: CONTACT_RECEIVER
+        value: "contact@ashokgiri.com.np"
+      - key: NODE_ENV
+        value: production

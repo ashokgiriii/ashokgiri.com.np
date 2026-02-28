@@ -22,8 +22,8 @@
 
     <link rel="shortcut icon" href="/images/aboutme-banner.png" type="image/x-icon" />
 
-    <!-- Tailwind CDN (ok for portfolio; for best perf use build version later) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (built locally) -->
+    <link rel="stylesheet" href="dist/tailwind.css" />
 
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -37,7 +37,7 @@
 
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <div class="max-w-6xl w-full glass-panel" role="document">
+    <div class="max-w-9xl w-full glass-panel" role="document">
       <div class="grid-layout">
         <!-- Sidebar -->
         <aside class="sidebar" aria-label="Profile sidebar">
@@ -185,14 +185,6 @@
               </a>
             </div>
 
-            <div class="mt-4">
-              <button type="button" class="message-button" id="open-message" aria-controls="message-modal">
-                Message Me
-              </button>
-              <p class="text-xs text-gray-400 mt-2">
-                Opens a quick message form and sends via your email app.
-              </p>
-            </div>
           </section>
 
           <section class="mb-6" aria-label="Skills">
@@ -335,82 +327,26 @@
             </div>
           </section>
 
-          <footer class="mt-auto" aria-label="Social links">
-            <h2 class="header-accent text-lg font-semibold mb-3">Connect</h2>
-
-            <div class="flex flex-wrap">
-              <a
-                href="https://www.facebook.com/sautaboy"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-                aria-label="Open Facebook"
-              >
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-                  alt=""
-                  class="w-4 h-4"
-                  loading="lazy"
-                  decoding="async"
-                />
-                Facebook
-              </a>
-
-              <a
-                href="https://www.instagram.com/sabdajaaal"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link flex items-center gap-1"
-                aria-label="Open Instagram"
-              >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                  alt=""
-                  class="w-4 h-4"
-                  loading="lazy"
-                  decoding="async"
-                />
-                Instagram
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/ashokgiridev"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-                aria-label="Open LinkedIn"
-              >
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                  alt=""
-                  class="w-4 h-4"
-                  loading="lazy"
-                  decoding="async"
-                />
-                LinkedIn
-              </a>
-
-              <a href="resume.pdf" download class="social-link" aria-label="Download CV">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
-                </svg>
-                CV
-              </a>
-
-            </div>
-          </footer>
+          <!-- Contact Form -->
+          <section class="sidebar-contact-form" aria-label="Contact form">
+            <h2 class="header-accent text-lg font-semibold">Send Message</h2>
+            <form id="sidebar-contact-form" class="sidebar-form">
+              <label class="sidebar-form__field">
+                <span>Your name</span>
+                <input type="text" name="name" required placeholder="John Doe" />
+              </label>
+              <label class="sidebar-form__field">
+                <span>Your email</span>
+                <input type="email" name="email" required placeholder="john@example.com" />
+              </label>
+              <label class="sidebar-form__field">
+                <span>Message</span>
+                <textarea name="message" rows="4" required placeholder="Your message..."></textarea>
+              </label>
+              <button type="submit" class="sidebar-form__submit">Send Message</button>
+              <p class="sidebar-form__status" id="form-status"></p>
+            </form>
+          </section>
         </aside>
 
         <!-- Main Content -->
@@ -427,7 +363,15 @@
 
           <div class="section-divider" role="separator" aria-hidden="true"></div>
 
-          <section class="mb-8" aria-label="Experience and projects">
+          <!-- Mini Navbar -->
+          <nav class="mini-navbar mb-6" aria-label="Section navigation">
+            <button type="button" class="nav-tab active" data-section="projects">Projects</button>
+            <button type="button" class="nav-tab" data-section="certificates">Certificates</button>
+            <button type="button" class="nav-tab" data-section="education">Education</button>
+          </nav>
+
+          <!-- Projects Section -->
+          <section class="content-section active" id="projects-section" aria-label="Experience and projects">
             <h2 class="header-accent text-xl font-bold mb-4">Experience & Projects</h2>
 
             <!-- Project 1 -->
@@ -549,15 +493,51 @@
             </article>
           </section>
 
-          <div class="section-divider" role="separator" aria-hidden="true"></div>
+          <!-- Certificates Section -->
+          <section class="content-section" id="certificates-section" aria-label="Certificates">
+            <h2 class="header-accent text-xl font-bold mb-4">Certificates</h2>
 
-          <section class="mb-8" aria-label="Education">
+            <div class="certificate-card">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">Web Development Bootcamp</h3>
+                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2023</span>
+              </div>
+              <p class="text-gray-400 text-sm mt-1">Udemy - Complete web development course covering HTML, CSS, JavaScript, Node.js, and MongoDB</p>
+            </div>
+
+            <div class="certificate-card">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">React - The Complete Guide</h3>
+                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2023</span>
+              </div>
+              <p class="text-gray-400 text-sm mt-1">Udemy - In-depth React course including Hooks, Redux, and Next.js</p>
+            </div>
+
+            <div class="certificate-card">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">JavaScript Algorithms and Data Structures</h3>
+                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2022</span>
+              </div>
+              <p class="text-gray-400 text-sm mt-1">freeCodeCamp - Comprehensive JavaScript programming certification</p>
+            </div>
+
+            <div class="certificate-card">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">Responsive Web Design</h3>
+                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2022</span>
+              </div>
+              <p class="text-gray-400 text-sm mt-1">freeCodeCamp - HTML and CSS responsive design principles</p>
+            </div>
+          </section>
+
+          <!-- Education Section -->
+          <section class="content-section" id="education-section" aria-label="Education">
             <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
 
             <div class="timeline-item">
               <div class="flex justify-between items-start">
                 <h3 class="font-semibold">Bachelor of Computer Applications (BCA)</h3>
-                <span class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">2021 – Present</span>
+                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2021 – Present</span>
               </div>
               <p class="text-gray-400 text-sm">Tribhuvan University</p>
             </div>
@@ -565,12 +545,99 @@
             <div class="timeline-item">
               <div class="flex justify-between items-start">
                 <h3 class="font-semibold">+2 in Computer Science</h3>
-                <span class="text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">2019 – 2021</span>
+                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2019 – 2021</span>
               </div>
               <p class="text-gray-400 text-sm">Hetauda School of Management</p>
             </div>
           </section>
 
+          <!-- Footer -->
+          <footer class="site-footer" aria-label="Site footer">
+            <div class="footer-content">
+              <div class="footer-section">
+                <h3 class="footer-heading">Connect</h3>
+                <div class="footer-socials">
+                  <a
+                    href="https://www.facebook.com/sautaboy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-social-link"
+                    aria-label="Open Facebook"
+                  >
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
+                      alt=""
+                      class="w-4 h-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    Facebook
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/sabdajaaal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-social-link"
+                    aria-label="Open Instagram"
+                  >
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                      alt=""
+                      class="w-4 h-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    Instagram
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/in/ashokgiridev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-social-link"
+                    aria-label="Open LinkedIn"
+                  >
+                    <img
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                      alt=""
+                      class="w-4 h-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    LinkedIn
+                  </a>
+
+                  <a href="resume.pdf" download class="footer-social-link" aria-label="Download CV">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                    CV
+                  </a>
+                </div>
+              </div>
+
+              <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 Ashok Giri. All rights reserved.</p>
+                <div class="footer-links">
+                  <a href="#" class="footer-link">Privacy Policy</a>
+                  <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+              </div>
+            </div>
+          </footer>
 
         </main>
       </div>
@@ -613,7 +680,13 @@
     </div>
 
     <!-- Defer JS so content loads first -->
-    <script src="https://unpkg.com/three@0.152.2/build/three.min.js" defer></script>
-    <script src="script.js" defer></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+    </script>
+    <script type="module" src="script.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,30 @@
+{
+  "name": "ashokgiri-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio site with contact API using Express and Resend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build:css": "tailwindcss -i ./tailwind.css -o ./dist/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./tailwind.css -o ./dist/tailwind.css --watch"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
+    "resend": "^4.1.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.1"
+  }
+}
