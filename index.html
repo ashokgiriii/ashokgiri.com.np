@@ -1,692 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashok Giri</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
 
-    <title>Ashok Giri | sautaboy</title>
-    <meta
-      name="description"
-      content="Ashok Giri (sautaboy) — Web Developer building modern, responsive web apps with React, Node.js, and MongoDB."
-    />
-    <meta name="theme-color" content="#0b1020" />
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Preconnect for faster font load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    .video-wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
 
-    <link rel="shortcut icon" href="/images/mainphoto.png" type="image/x-icon" />
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) contrast(1.05) saturate(1.05);
+      transform: scale(1.02);
+    }
 
-    <!-- Tailwind CSS (built locally) -->
-    <link rel="stylesheet" href="dist/tailwind.css" />
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.35)),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.35));
+      pointer-events: none;
+    }
 
-    <link rel="stylesheet" href="index.css" />
-  </head>
+    .intro-copy {
+      position: absolute;
+      left: 2rem;
+      bottom: 2rem;
+      z-index: 1;
+      max-width: min(26rem, calc(100vw - 9rem));
+      color: #fff8ef;
+      text-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+    }
 
-  <body class="p-0 md:p-8">
-    <noscript>
-      <div class="max-w-4xl mx-auto mt-4 p-4 rounded-lg bg-red-500/10 text-red-200 border border-red-500/20">
-        This site works best with JavaScript enabled (background animation + some interactions).
-      </div>
-    </noscript>
+    .intro-copy p {
+      font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+      line-height: 1.5;
+      opacity: 0.9;
+    }
 
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    .intro-copy strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.6rem, 3.5vw, 3rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
 
-    <div class="max-w-9xl w-full glass-panel" role="document">
-      <div class="grid-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar" aria-label="Profile sidebar">
-          <header class="flex flex-col items-center">
-            <img
-              src="/images/mainphoto.png"
-              alt="Portrait of Ashok Giri"
-              class="profile-img"
-              loading="lazy"
-              decoding="async"
-              fetchpriority="high"
-              width="240"
-              height="240"
-            />
+    .egg-launcher {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      z-index: 2;
+      width: 6.5rem;
+      height: 6.5rem;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      touch-action: manipulation;
+    }
 
-            <h1 class="text-2xl font-bold text-center mb-1">Ashok Giri</h1>
-            <p class="text-indigo-300 text-center mb-6">sautaboy</p>
-          </header>
+    .egg-launcher:focus-visible {
+      outline: 3px solid rgba(255, 248, 220, 0.85);
+      outline-offset: 6px;
+      border-radius: 999px;
+    }
 
-          <section
-            class="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-4 rounded-lg mb-6"
-            aria-label="Role summary"
-          >
-            <h2 class="font-semibold mb-2 flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 mr-2 text-indigo-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              Web Developer
-            </h2>
-            <p class="text-sm text-gray-300">
-              Creating seamless digital experiences with modern web technologies.
-            </p>
-          </section>
+    .egg-shell {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(var(--shadow));
+    }
 
-          <section class="mb-6" aria-label="Contact information">
-            <h2 class="header-accent text-lg font-semibold">Contact</h2>
+    .egg-half {
+      display: block;
+      position: absolute;
+      left: 50%;
+      width: 76%;
+      height: 88%;
+      background: linear-gradient(180deg, #fffdf7 0%, #f5e6c8 100%);
+      border: 2px solid rgba(98, 71, 32, 0.18);
+      transition:
+        transform 0.6s ease,
+        opacity 0.35s ease;
+    }
 
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-              <a href="tel:+9779840038544" class="hover:text-indigo-300" aria-label="Call Ashok Giri">
-                +977 9840038544
-              </a>
-            </div>
+    .egg-half::after {
+      content: "";
+      position: absolute;
+      inset: 11% 14%;
+      border-radius: inherit;
+      background: rgba(255, 255, 255, 0.34);
+      filter: blur(7px);
+    }
 
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <a
-                href="mailto:contact@ashokgiri.com.np"
-                class="hover:text-indigo-300"
-                aria-label="Email contact@ashokgiri.com.np"
-              >
-                contact@ashokgiri.com.np
-              </a>
-            </div>
+    .egg-half.left {
+      top: 6%;
+      transform: translateX(-96%) rotate(-6deg);
+      border-radius: 58% 42% 48% 52% / 58% 50% 50% 42%;
+      clip-path: polygon(0 0, 100% 0, 100% 61%, 82% 69%, 95% 79%, 75% 88%, 88% 100%, 0 100%);
+    }
 
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <span>Hetauda-8, Kamane, Nepal</span>
-            </div>
+    .egg-half.right {
+      top: 6%;
+      transform: translateX(-4%) rotate(6deg);
+      border-radius: 42% 58% 52% 48% / 50% 58% 42% 50%;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 13% 100%, 24% 88%, 5% 79%, 18% 69%, 0 61%);
+    }
 
-            <div class="contact-item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="contact-icon h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c1.657 0 3-4.03 3-9s-1.343-9-3-9m-9 9a9 9 0 019-9"
-                />
-              </svg>
-              <a
-                href="https://sautaboy.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-indigo-300"
-                aria-label="Open website sautaboy.com"
-              >
-                sautaboy.com
-              </a>
-            </div>
+    .egg-yolk {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34%;
+      height: 34%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ffe79f 0%, #ffc532 50%, #f59e0b 100%);
+      transform: translate(-50%, -42%);
+      box-shadow:
+        inset 0 -10px 18px rgba(186, 96, 8, 0.24),
+        0 10px 18px rgba(0, 0, 0, 0.15);
+      transition:
+        transform 0.5s ease,
+        opacity 0.25s ease;
+    }
 
-          </section>
+    .egg-label {
+      position: absolute;
+      left: 50%;
+      bottom: -1.55rem;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff6dd;
+      opacity: 0.95;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
 
-          <section class="mb-6" aria-label="Skills">
-            <h2 class="header-accent text-lg font-semibold">Skills</h2>
+    .egg-launcher:hover .egg-shell,
+    .egg-launcher:focus-visible .egg-shell {
+      transform: translateY(-4px) scale(1.02);
+    }
 
-            <div class="mb-4">
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Frontend</h3>
-              <div class="flex flex-wrap">
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  HTML5
-                </span>
+    .egg-launcher.cracking {
+      pointer-events: none;
+    }
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  CSS3
-                </span>
+    .egg-launcher.cracking .egg-half.left {
+      transform: translateX(-142%) translateY(-24%) rotate(-35deg);
+      opacity: 0.96;
+    }
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  JavaScript
-                </span>
+    .egg-launcher.cracking .egg-half.right {
+      transform: translateX(40%) translateY(-24%) rotate(35deg);
+      opacity: 0.96;
+    }
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  React
-                </span>
+    .egg-launcher.cracking .egg-yolk {
+      transform: translate(-50%, 95%) scale(0.85);
+      opacity: 0;
+    }
 
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Bootstrap
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Tailwind
-                </span>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Backend</h3>
-              <div class="flex flex-wrap">
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Node.js
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                    alt=""
-                    class="w-4 h-4 bg-white rounded-full p-0.5"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Express
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Tools</h3>
-              <div class="flex flex-wrap">
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  MongoDB
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  Git
-                </span>
-
-                <span class="skill-pill">
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                    alt=""
-                    class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  VS Code
-                </span>
-              </div>
-            </div>
-          </section>
-
-          <!-- Contact Form -->
-          <section class="sidebar-contact-form" aria-label="Contact form">
-            <h2 class="header-accent text-lg font-semibold">Send Message</h2>
-            <form id="sidebar-contact-form" class="sidebar-form">
-              <label class="sidebar-form__field">
-                <span>Your name</span>
-                <input type="text" name="name" required placeholder="John Doe" />
-              </label>
-              <label class="sidebar-form__field">
-                <span>Your email</span>
-                <input type="email" name="email" required placeholder="john@example.com" />
-              </label>
-              <label class="sidebar-form__field">
-                <span>Message</span>
-                <textarea name="message" rows="4" required placeholder="Your message..."></textarea>
-              </label>
-              <button type="submit" class="sidebar-form__submit">Send Message</button>
-              <p class="sidebar-form__status" id="form-status"></p>
-            </form>
-          </section>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content" aria-label="Main content">
-          <section class="mb-8" aria-label="Professional summary">
-            <h2 class="header-accent text-xl font-bold">Professional Summary</h2>
-            <p class="text-gray-300 leading-relaxed">
-              Results-driven web developer with a strong foundation in both frontend and backend technologies.
-              Experienced in building responsive, dynamic, and user-friendly web applications using modern JavaScript
-              frameworks and libraries. Passionate about creating efficient, scalable solutions with clean code and
-              intuitive user interfaces.
-            </p>
-          </section>
-
-          <div class="section-divider" role="separator" aria-hidden="true"></div>
-
-          <!-- Mini Navbar -->
-          <nav class="mini-navbar mb-6" aria-label="Section navigation">
-            <button type="button" class="nav-tab active" data-section="projects">Projects</button>
-            <button type="button" class="nav-tab" data-section="certificates">Certificates</button>
-            <button type="button" class="nav-tab" data-section="education">Education</button>
-          </nav>
-
-          <!-- Projects Section -->
-          <section class="content-section active" id="projects-section" aria-label="Experience and projects">
-            <h2 class="header-accent text-xl font-bold mb-4">Experience & Projects</h2>
-
-            <!-- Project 1 -->
-            <article class="project-card">
-              <a
-                class="redirect-link"
-                href="https://tweetnepal-sr0s.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Food For All project"
-              ></a>
-
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Food For All
-              </h3>
-
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>Developed a food donation platform with integrated location services and real-time notifications.</li>
-                <li>Implemented secure user authentication and donation management system.</li>
-                <li>Optimized performance for mobile devices with responsive design principles.</li>
-              </ul>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Node.js</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
-              </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-card">
-              <a
-                class="redirect-link"
-                href="https://tweetnepal-sr0s.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Tweet Nepal project"
-              ></a>
-
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Tweet Nepal
-              </h3>
-
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>A platform to share thoughts, post notes, read others’ updates, and join conversations through comments.</li>
-                <li>Share your tweets and notes, explore what others are posting, and interact with a community that values ideas.</li>
-                <li>Post, read, and comment — a simple social space for tweeting, sharing notes, and connecting with others.</li>
-              </ul>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">JavaScript</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Express</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">MongoDB</span>
-              </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-card">
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Bytes Pedia
-              </h3>
-
-              <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
-                <li>Built an educational platform with course materials and progress tracking.</li>
-                <li>Implemented user authentication and content management system.</li>
-                <li>Designed interactive learning modules with quizzes and assessments.</li>
-              </ul>
-
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">React</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Node.js</span>
-                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Firebase</span>
-              </div>
-            </article>
-          </section>
-
-          <!-- Certificates Section -->
-          <section class="content-section" id="certificates-section" aria-label="Certificates">
-            <h2 class="header-accent text-xl font-bold mb-4">Certificates</h2>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">Web Development Bootcamp</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2023</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">Udemy - Complete web development course covering HTML, CSS, JavaScript, Node.js, and MongoDB</p>
-            </div>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">React - The Complete Guide</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2023</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">Udemy - In-depth React course including Hooks, Redux, and Next.js</p>
-            </div>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">JavaScript Algorithms and Data Structures</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2022</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">freeCodeCamp - Comprehensive JavaScript programming certification</p>
-            </div>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">Responsive Web Design</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2022</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">freeCodeCamp - HTML and CSS responsive design principles</p>
-            </div>
-          </section>
-
-          <!-- Education Section -->
-          <section class="content-section" id="education-section" aria-label="Education">
-            <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
-
-            <div class="timeline-item">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">Bachelor of Computer Applications (BCA)</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2021 – Present</span>
-              </div>
-              <p class="text-gray-400 text-sm">Tribhuvan University</p>
-            </div>
-
-            <div class="timeline-item">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">+2 in Computer Science</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2019 – 2021</span>
-              </div>
-              <p class="text-gray-400 text-sm">Hetauda School of Management</p>
-            </div>
-          </section>
-
-          <!-- Footer -->
-          <footer class="site-footer" aria-label="Site footer">
-            <div class="footer-content">
-              <div class="footer-section">
-                <h3 class="footer-heading">Connect</h3>
-                <div class="footer-socials">
-                  <a
-                    href="https://www.facebook.com/sautaboy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-social-link"
-                    aria-label="Open Facebook"
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-                      alt=""
-                      class="w-4 h-4"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    Facebook
-                  </a>
-
-                  <a
-                    href="https://www.instagram.com/sabdajaaal"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-social-link"
-                    aria-label="Open Instagram"
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                      alt=""
-                      class="w-4 h-4"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    Instagram
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/ashokgiridev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="footer-social-link"
-                    aria-label="Open LinkedIn"
-                  >
-                    <img
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                      alt=""
-                      class="w-4 h-4"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    LinkedIn
-                  </a>
-
-                  <a href="resume.pdf" download class="footer-social-link" aria-label="Download CV">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="w-4 h-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                      />
-                    </svg>
-                    CV
-                  </a>
-                </div>
-              </div>
-
-              <div class="footer-bottom">
-                <p class="footer-copyright">© 2024 Ashok Giri. All rights reserved.</p>
-                <div class="footer-links">
-                  <a href="#" class="footer-link">Privacy Policy</a>
-                  <a href="#" class="footer-link">Terms of Service</a>
-                </div>
-              </div>
-            </div>
-          </footer>
-
-        </main>
-      </div>
-    </div>
-
-    <div class="message-modal" id="message-modal" aria-hidden="true" role="dialog" aria-labelledby="message-title">
-      <div class="message-modal__backdrop" data-close></div>
-      <div class="message-modal__panel" role="document">
-        <div class="message-modal__header">
-          <h2 id="message-title">Send a message</h2>
-          <button type="button" class="message-modal__close" aria-label="Close message form" data-close>
-            &times;
-          </button>
-        </div>
-        <form class="message-form" id="message-form">
-          <label class="message-form__field">
-            <span>Your name</span>
-            <input type="text" name="name" id="message-name" required placeholder="Your full name" />
-          </label>
-          <label class="message-form__field">
-            <span>Your email</span>
-            <input type="email" name="email" id="message-email" required placeholder="you@example.com" />
-          </label>
-          <label class="message-form__field">
-            <span>Your message</span>
-            <textarea
-              name="message"
-              id="message-body"
-              rows="5"
-              required
-              placeholder="Tell me about your project or question..."
-            ></textarea>
-          </label>
-          <button type="submit" class="message-submit">Send Message</button>
-          <p class="message-form__note">
-            This uses your device email app to deliver the message.
-          </p>
-        </form>
-      </div>
-    </div>
-
-    <!-- Defer JS so content loads first -->
-    <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    @media (prefers-reduced-motion: reduce) {
+      .egg-half,
+      .egg-yolk,
+      .egg-shell {
+        transition: none;
       }
     }
-    </script>
-    <script type="module" src="script.js" defer></script>
-  </body>
+
+    @media (max-width: 640px) {
+      .intro-copy {
+        left: 1rem;
+        bottom: 1rem;
+        max-width: calc(100vw - 7.5rem);
+      }
+
+      .egg-launcher {
+        right: 1rem;
+        bottom: 1rem;
+        width: 5.5rem;
+        height: 5.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="VID_20240809_181313_561.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+
+    <div class="intro-copy">
+      <strong>Ashok Giri</strong>
+      <p>Tap the egg to crack it open and enter the portfolio.</p>
+    </div>
+
+    <button class="egg-launcher" type="button" aria-label="Open portfolio">
+      <span class="egg-shell" aria-hidden="true">
+        <span class="egg-half left"></span>
+        <span class="egg-half right"></span>
+        <span class="egg-yolk"></span>
+      </span>
+    </button>
+  </div>
+
+  <script>
+    const eggLauncher = document.querySelector(".egg-launcher");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const redirectDelay = reduceMotion ? 0 : 650;
+
+    eggLauncher?.addEventListener("click", () => {
+      eggLauncher.classList.add("cracking");
+      window.setTimeout(() => {
+        window.location.href = "portfolio.html";
+      }, redirectDelay);
+    });
+  </script>
+</body>
 </html>
