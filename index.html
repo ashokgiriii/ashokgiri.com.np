@@ -225,33 +225,13 @@
       <source src="VID_20240809_181313_561.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
-    <div class="video-overlay"></div>
+</div>
+    
 
-    <div class="intro-copy">
-      <strong>Ashok Giri</strong>
-      <p>Tap the egg to crack it open and enter the portfolio.</p>
-    </div>
+  
 
-    <button class="egg-launcher" type="button" aria-label="Open portfolio">
-      <span class="egg-shell" aria-hidden="true">
-        <span class="egg-half left"></span>
-        <span class="egg-half right"></span>
-        <span class="egg-yolk"></span>
-      </span>
-    </button>
-  </div>
+    
 
-  <script>
-    const eggLauncher = document.querySelector(".egg-launcher");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const redirectDelay = reduceMotion ? 0 : 650;
-
-    eggLauncher?.addEventListener("click", () => {
-      eggLauncher.classList.add("cracking");
-      window.setTimeout(() => {
-        window.location.href = "portfolio.html";
-      }, redirectDelay);
-    });
-  </script>
+  
 </body>
 </html>
