@@ -2,7 +2,7 @@
   "name": "ashokgiri-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfolio site with contact API using Express and Resend",
+  "description": "Portfolio site with contact API using Express and Nodemailer",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -20,7 +20,7 @@
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
-    "resend": "^4.1.2"
+    "nodemailer": "^7.0.13"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.27",

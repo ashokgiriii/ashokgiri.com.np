@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
-const { sendContactEmail } = require("./src/services/emailService");
+const { sendContactEmail, isEmailConfigured } = require("./src/services/emailService");
 
 const app = express();
 
@@ -35,14 +35,13 @@ app.use(helmet({
 app.use(cors());
 app.use(morgan("dev"));
 
-// Rate Limiting - 3 messages per day per IP
+// Rate Limiting - 3 messages per day per IP (default keyGenerator uses ipKeyGenerator for IPv6)
 const contactLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 24 hours
   max: 3, // 3 requests per window
   message: { error: "You can only send 3 messages per day. Please try again tomorrow." },
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req) => req.ip, // Rate limit by IP address
 });
 
 app.use(express.json({ limit: "100kb" }));
@@ -50,7 +49,11 @@ app.use(express.static(__dirname));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 app.get("/api/health", (_req, res) => {
-  res.json({ ok: true, service: "contact-api" });
+  res.json({
+    ok: true,
+    service: "contact-api",
+    emailConfigured: isEmailConfigured(),
+  });
 });
 
 app.post("/api/contact", contactLimiter, async (req, res, next) => {
@@ -83,6 +86,9 @@ app.post("/api/contact", contactLimiter, async (req, res, next) => {
 
     return res.status(201).json({ success: true, message: "Message sent." });
   } catch (err) {
+    if (err.statusCode >= 400 && err.statusCode < 600 && err.expose) {
+      return res.status(err.statusCode).json({ error: err.message });
+    }
     next(err);
   }
 });
@@ -90,7 +96,15 @@ app.post("/api/contact", contactLimiter, async (req, res, next) => {
 // Global Error Handler
 app.use((err, _req, res, _next) => {
   console.error(err.stack);
-  res.status(500).json({ error: "Internal Server Error" });
+  const code = err.statusCode;
+  const safeClientError =
+    err.expose &&
+    Number.isInteger(code) &&
+    code >= 400 &&
+    code < 600;
+  const status = safeClientError ? code : 500;
+  const body = safeClientError ? { error: err.message } : { error: "Internal Server Error" };
+  res.status(status).json(body);
 });
 
 app.get("*", (_req, res) => {

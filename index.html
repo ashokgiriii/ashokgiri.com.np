@@ -29,7 +29,43 @@
   </head>
 
   <body class="p-0 md:p-8">
+    <div id="page-skeleton" class="page-skeleton" aria-busy="true" aria-live="polite">
+      <div class="page-skeleton__frame glass-panel">
+        <div class="page-skeleton__grid">
+          <aside class="page-skeleton__aside">
+            <span class="skeleton-block skeleton-block--circle"></span>
+            <span class="skeleton-block skeleton-block--line skeleton-block--w-60"></span>
+            <span class="skeleton-block skeleton-block--line skeleton-block--w-40"></span>
+            <span class="skeleton-block skeleton-block--card"></span>
+            <span class="skeleton-block skeleton-block--line"></span>
+            <span class="skeleton-block skeleton-block--line"></span>
+            <span class="skeleton-block skeleton-block--line skeleton-block--w-80"></span>
+          </aside>
+          <div class="page-skeleton__main">
+            <span class="skeleton-block skeleton-block--line skeleton-block--w-90"></span>
+            <span class="skeleton-block skeleton-block--line"></span>
+            <span class="skeleton-block skeleton-block--line"></span>
+            <span class="skeleton-block skeleton-block--tabs"></span>
+            <span class="skeleton-block skeleton-block--card"></span>
+            <span class="skeleton-block skeleton-block--card"></span>
+            <span class="skeleton-block skeleton-block--card skeleton-block--short"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <noscript>
+      <style>
+        #page-skeleton {
+          display: none !important;
+        }
+        body {
+          overflow: auto !important;
+        }
+        body .app-shell {
+          opacity: 1 !important;
+        }
+      </style>
       <div class="max-w-4xl mx-auto mt-4 p-4 rounded-lg bg-red-500/10 text-red-200 border border-red-500/20">
         This site works best with JavaScript enabled (background animation + some interactions).
       </div>
@@ -37,7 +73,7 @@
 
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <div class="max-w-9xl w-full glass-panel" role="document">
+    <div class="max-w-9xl w-full glass-panel app-shell" role="document">
       <div class="grid-layout">
         <!-- Sidebar -->
         <aside class="sidebar" aria-label="Profile sidebar">
@@ -184,7 +220,6 @@
                 sautaboy.com
               </a>
             </div>
-
           </section>
 
           <section class="mb-6" aria-label="Skills">
@@ -327,26 +362,9 @@
             </div>
           </section>
 
-          <!-- Contact Form -->
-          <section class="sidebar-contact-form" aria-label="Contact form">
-            <h2 class="header-accent text-lg font-semibold">Send Message</h2>
-            <form id="sidebar-contact-form" class="sidebar-form">
-              <label class="sidebar-form__field">
-                <span>Your name</span>
-                <input type="text" name="name" required placeholder="John Doe" />
-              </label>
-              <label class="sidebar-form__field">
-                <span>Your email</span>
-                <input type="email" name="email" required placeholder="john@example.com" />
-              </label>
-              <label class="sidebar-form__field">
-                <span>Message</span>
-                <textarea name="message" rows="4" required placeholder="Your message..."></textarea>
-              </label>
-              <button type="submit" class="sidebar-form__submit">Send Message</button>
-              <p class="sidebar-form__status" id="form-status"></p>
-            </form>
-          </section>
+          <button type="button" id="go-to-contact" class="sidebar-contact-btn">
+            Contact
+          </button>
         </aside>
 
         <!-- Main Content -->
@@ -366,8 +384,8 @@
           <!-- Mini Navbar -->
           <nav class="mini-navbar mb-6" aria-label="Section navigation">
             <button type="button" class="nav-tab active" data-section="projects">Projects</button>
-            <button type="button" class="nav-tab" data-section="certificates">Certificates</button>
             <button type="button" class="nav-tab" data-section="education">Education</button>
+            <button type="button" class="nav-tab" data-section="contact">Contact</button>
           </nav>
 
           <!-- Projects Section -->
@@ -493,43 +511,6 @@
             </article>
           </section>
 
-          <!-- Certificates Section -->
-          <section class="content-section" id="certificates-section" aria-label="Certificates">
-            <h2 class="header-accent text-xl font-bold mb-4">Certificates</h2>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">Web Development Bootcamp</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2023</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">Udemy - Complete web development course covering HTML, CSS, JavaScript, Node.js, and MongoDB</p>
-            </div>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">React - The Complete Guide</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2023</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">Udemy - In-depth React course including Hooks, Redux, and Next.js</p>
-            </div>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">JavaScript Algorithms and Data Structures</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2022</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">freeCodeCamp - Comprehensive JavaScript programming certification</p>
-            </div>
-
-            <div class="certificate-card">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">Responsive Web Design</h3>
-                <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2022</span>
-              </div>
-              <p class="text-gray-400 text-sm mt-1">freeCodeCamp - HTML and CSS responsive design principles</p>
-            </div>
-          </section>
-
           <!-- Education Section -->
           <section class="content-section" id="education-section" aria-label="Education">
             <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
@@ -548,6 +529,37 @@
                 <span class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full">2019 – 2021</span>
               </div>
               <p class="text-gray-400 text-sm">Hetauda School of Management</p>
+            </div>
+          </section>
+
+          <!-- Contact Section -->
+          <section class="content-section" id="contact-section" aria-label="Contact form">
+            <h2 class="header-accent text-xl font-bold mb-2">Get in touch</h2>
+            <p class="text-gray-400 text-sm mb-6">
+              Send a message and I will get back to you as soon as I can.
+            </p>
+
+            <div class="contact-panel">
+              <form id="main-contact-form" class="main-contact-form">
+                <label class="main-contact-form__field">
+                  <span>Name</span>
+                  <input type="text" name="name" required autocomplete="name" placeholder="Your name" />
+                </label>
+                <label class="main-contact-form__field">
+                  <span>Email</span>
+                  <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                </label>
+                <label class="main-contact-form__field">
+                  <span>Subject</span>
+                  <input type="text" name="subject" required placeholder="What is this about?" />
+                </label>
+                <label class="main-contact-form__field">
+                  <span>Message</span>
+                  <textarea name="message" rows="6" required minlength="10" placeholder="Your message (at least 10 characters)..."></textarea>
+                </label>
+                <button type="submit" class="main-contact-form__submit">Send</button>
+                <p class="main-contact-form__status" id="main-contact-status" role="status"></p>
+              </form>
             </div>
           </section>
 
@@ -630,7 +642,7 @@
               </div>
 
               <div class="footer-bottom">
-                <p class="footer-copyright">© 2024 Ashok Giri. All rights reserved.</p>
+                <p class="footer-copyright">© 2026 Ashok Giri. All rights reserved.</p>
                 <div class="footer-links">
                   <a href="#" class="footer-link">Privacy Policy</a>
                   <a href="#" class="footer-link">Terms of Service</a>
@@ -640,42 +652,6 @@
           </footer>
 
         </main>
-      </div>
-    </div>
-
-    <div class="message-modal" id="message-modal" aria-hidden="true" role="dialog" aria-labelledby="message-title">
-      <div class="message-modal__backdrop" data-close></div>
-      <div class="message-modal__panel" role="document">
-        <div class="message-modal__header">
-          <h2 id="message-title">Send a message</h2>
-          <button type="button" class="message-modal__close" aria-label="Close message form" data-close>
-            &times;
-          </button>
-        </div>
-        <form class="message-form" id="message-form">
-          <label class="message-form__field">
-            <span>Your name</span>
-            <input type="text" name="name" id="message-name" required placeholder="Your full name" />
-          </label>
-          <label class="message-form__field">
-            <span>Your email</span>
-            <input type="email" name="email" id="message-email" required placeholder="you@example.com" />
-          </label>
-          <label class="message-form__field">
-            <span>Your message</span>
-            <textarea
-              name="message"
-              id="message-body"
-              rows="5"
-              required
-              placeholder="Tell me about your project or question..."
-            ></textarea>
-          </label>
-          <button type="submit" class="message-submit">Send Message</button>
-          <p class="message-form__note">
-            This uses your device email app to deliver the message.
-          </p>
-        </form>
       </div>
     </div>
 

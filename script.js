@@ -399,177 +399,117 @@ class SolarSystem {
     }
 }
 
-/**
- * ContactForm UI Logic
- * Handles modal, form submission, and validation.
- */
-class ContactForm {
-    constructor() {
-        this.modal = document.getElementById("message-modal");
-        this.openBtn = document.getElementById("open-message");
-        this.form = document.getElementById("message-form");
-
-        if (!this.modal || !this.openBtn || !this.form) return;
-
-        this.submitBtn = this.form.querySelector('button[type="submit"]');
-        this.inputs = {
-            name: document.getElementById("message-name"),
-            email: document.getElementById("message-email"),
-            message: document.getElementById("message-body"),
+function waitNextFrames(n = 2) {
+    return new Promise((resolve) => {
+        let count = 0;
+        const step = () => {
+            count += 1;
+            if (count >= n) resolve();
+            else requestAnimationFrame(step);
         };
+        requestAnimationFrame(step);
+    });
+}
 
-        this.init();
-    }
+async function revealAppShell() {
+    const fontReady =
+        document.fonts && typeof document.fonts.ready !== "undefined"
+            ? document.fonts.ready
+            : Promise.resolve();
 
-    init() {
-        this.openBtn.addEventListener("click", () => this.open());
+    await Promise.race([
+        Promise.all([fontReady.catch(() => {}), waitNextFrames(2)]),
+        new Promise((r) => setTimeout(r, 2800)),
+    ]);
 
-        const closeTargets = this.modal.querySelectorAll("[data-close]");
-        closeTargets.forEach((t) => t.addEventListener("click", () => this.close()));
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && this.modal.classList.contains("is-open")) {
-                this.close();
-            }
-        });
-
-        this.form.addEventListener("submit", (e) => this.handleSubmit(e));
-    }
-
-    open() {
-        this.modal.classList.add("is-open");
-        this.modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-        if (this.inputs.name) this.inputs.name.focus();
-    }
-
-    close() {
-        this.modal.classList.remove("is-open");
-        this.modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-    }
-
-    setLoading(isLoading) {
-        if (!this.submitBtn) return;
-        this.submitBtn.disabled = isLoading;
-        this.submitBtn.textContent = isLoading ? "Sending..." : "Send Message";
-        this.submitBtn.style.opacity = isLoading ? "0.7" : "1";
-        this.submitBtn.style.cursor = isLoading ? "wait" : "pointer";
-    }
-
-    async handleSubmit(e) {
-        e.preventDefault();
-        this.setLoading(true);
-
-        const payload = {
-            name: this.inputs.name?.value.trim(),
-            email: this.inputs.email?.value.trim(),
-            subject: `Portfolio message from ${this.inputs.name?.value.trim()}`,
-            message: this.inputs.message?.value.trim(),
-        };
-
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-            });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.error || "Failed to send message.");
-            }
-
-            alert("Message sent successfully!");
-            this.form.reset();
-            this.close();
-        } catch (err) {
-            alert(`Error: ${err.message}`);
-        } finally {
-            this.setLoading(false);
-        }
+    document.body.classList.add("is-app-ready");
+    const sk = document.getElementById("page-skeleton");
+    if (sk) {
+        sk.setAttribute("aria-busy", "false");
+        sk.setAttribute("aria-hidden", "true");
     }
 }
 
 /**
- * SidebarContactForm
- * Handles the sidebar contact form submission.
+ * Main contact form (Contact tab). Instant UI: reset + success, then confirms in background.
  */
-class SidebarContactForm {
+class MainContactForm {
     constructor() {
-        this.form = document.getElementById("sidebar-contact-form");
-        this.statusEl = document.getElementById("form-status");
-        this.submitBtn = this.form?.querySelector('button[type="submit"]');
+        this.form = document.getElementById("main-contact-form");
+        this.statusEl = document.getElementById("main-contact-status");
+        this._inFlight = false;
+        this._statusTimer = 0;
 
         if (!this.form) return;
 
-        this.init();
-    }
-
-    init() {
         this.form.addEventListener("submit", (e) => this.handleSubmit(e));
-    }
-
-    setLoading(isLoading) {
-        if (!this.submitBtn) return;
-        this.submitBtn.disabled = isLoading;
-        this.submitBtn.textContent = isLoading ? "Sending..." : "Send Message";
     }
 
     showStatus(message, type) {
         if (!this.statusEl) return;
         this.statusEl.textContent = message;
-        this.statusEl.className = `sidebar-form__status ${type}`;
+        this.statusEl.className = type
+            ? `main-contact-form__status ${type}`
+            : "main-contact-form__status";
 
-        // Clear success message after 2 seconds
         if (type === "success") {
-            setTimeout(() => {
+            window.clearTimeout(this._statusTimer);
+            this._statusTimer = window.setTimeout(() => {
                 this.statusEl.textContent = "";
-                this.statusEl.className = "sidebar-form__status";
-            }, 2000);
+                this.statusEl.className = "main-contact-form__status";
+            }, 5000);
         }
     }
 
-    async handleSubmit(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        this.setLoading(true);
-        this.showStatus("", "");
+        if (this._inFlight) return;
+        if (!this.form.checkValidity()) {
+            this.form.reportValidity();
+            return;
+        }
 
         const formData = new FormData(this.form);
         const payload = {
-            name: formData.get("name")?.trim(),
-            email: formData.get("email")?.trim(),
-            subject: `Portfolio message from ${formData.get("name")?.trim()}`,
-            message: formData.get("message")?.trim(),
+            name: String(formData.get("name") || "").trim(),
+            email: String(formData.get("email") || "").trim(),
+            subject: String(formData.get("subject") || "").trim(),
+            message: String(formData.get("message") || "").trim(),
         };
 
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
+        this._inFlight = true;
+        this.showStatus("", "");
+        this.form.reset();
+        this.showStatus("Message sent. Thank you!", "success");
+
+        fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        })
+            .then(async (res) => {
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    throw new Error(
+                        data.error || "Could not confirm delivery. Try again or email contact@ashokgiri.com.np."
+                    );
+                }
+            })
+            .catch((err) => {
+                this.showStatus(
+                    err.message ||
+                        "Could not confirm delivery. Try again or email contact@ashokgiri.com.np.",
+                    "error"
+                );
+            })
+            .finally(() => {
+                this._inFlight = false;
             });
-
-            const data = await res.json();
-
-            if (!res.ok) {
-                throw new Error(data.error || "Failed to send message.");
-            }
-
-            this.showStatus("Message sent successfully!", "success");
-            this.form.reset();
-        } catch (err) {
-            this.showStatus(`Error: ${err.message}`, "error");
-        } finally {
-            this.setLoading(false);
-        }
     }
 }
 
 /**
- * Tab Navigation
- * Handles switching between Projects, Certificates, and Education sections.
+ * Tab navigation: Projects, Education, Contact.
  */
 class TabNavigation {
     constructor() {
@@ -578,39 +518,45 @@ class TabNavigation {
 
         if (!this.tabs.length || !this.sections.length) return;
 
-        this.init();
-    }
-
-    init() {
         this.tabs.forEach((tab) => {
             tab.addEventListener("click", () => this.switchTab(tab));
         });
     }
 
+    switchTo(sectionName) {
+        const tab = [...this.tabs].find((t) => t.dataset.section === sectionName);
+        if (tab) this.switchTab(tab);
+    }
+
     switchTab(clickedTab) {
         const targetSection = clickedTab.dataset.section;
 
-        // Remove active class from all tabs
         this.tabs.forEach((tab) => tab.classList.remove("active"));
-
-        // Add active class to clicked tab
         clickedTab.classList.add("active");
-
-        // Hide all sections
         this.sections.forEach((section) => section.classList.remove("active"));
 
-        // Show target section
         const targetElement = document.getElementById(`${targetSection}-section`);
-        if (targetElement) {
-            targetElement.classList.add("active");
-        }
+        if (targetElement) targetElement.classList.add("active");
     }
 }
 
-// Initialize everything when DOM is ready
+function wireGoToContact(tabNav) {
+    document.getElementById("go-to-contact")?.addEventListener("click", () => {
+        tabNav.switchTo("contact");
+        document.getElementById("contact-section")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    const tabNav = new TabNavigation();
     new SolarSystem("bg-canvas");
-    new ContactForm();
-    new SidebarContactForm();
-    new TabNavigation();
+    new MainContactForm();
+    wireGoToContact(tabNav);
+
+    revealAppShell().catch(() => {
+        document.body.classList.add("is-app-ready");
+    });
 });
