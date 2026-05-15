@@ -72,21 +72,22 @@ function escapeHtml(text) {
  * @returns {Promise<{ messageId?: string }>}
  */
 async function sendContactEmail({ to, replyTo, subject, name, message }) {
-    if (!isEmailConfigured()) {
-        const devLog =
-            process.env.NODE_ENV !== "production" &&
-            process.env.CONTACT_DEV_LOG_ONLY === "true";
-        if (devLog) {
-            console.info("[contact] dev log (SMTP not configured)", {
-                to,
-                replyTo,
-                subject,
-                name,
-                messagePreview: String(message).slice(0, 500),
-            });
-            return { messageId: "dev-logged", skipped: true };
-        }
+    // Check for dev mode first (for testing without real SMTP)
+    const devLog =
+        process.env.NODE_ENV !== "production" &&
+        process.env.CONTACT_DEV_LOG_ONLY === "true";
+    if (devLog) {
+        console.info("[contact] dev log (email not actually sent)", {
+            to,
+            replyTo,
+            subject,
+            name,
+            messagePreview: String(message).slice(0, 500),
+        });
+        return { messageId: "dev-logged", skipped: true };
+    }
 
+    if (!isEmailConfigured()) {
         throw httpError(
             "Email is not configured. Set SMTP_HOST, MAIL_FROM, and usually SMTP_USER / SMTP_PASS (see .env.example).",
             503
