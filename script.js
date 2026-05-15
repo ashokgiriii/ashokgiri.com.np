@@ -418,7 +418,7 @@ async function revealAppShell() {
             : Promise.resolve();
 
     await Promise.race([
-        Promise.all([fontReady.catch(() => {}), waitNextFrames(2)]),
+        Promise.all([fontReady.catch(() => { }), waitNextFrames(2)]),
         new Promise((r) => setTimeout(r, 2800)),
     ]);
 
@@ -498,7 +498,7 @@ class MainContactForm {
             .catch((err) => {
                 this.showStatus(
                     err.message ||
-                        "Could not confirm delivery. Try again or email ashokgiri.dev@gmail.com.",
+                    "Could not confirm delivery. Try again or email ashokgiri.dev@gmail.com.",
                     "error"
                 );
             })
@@ -550,11 +550,29 @@ function wireGoToContact(tabNav) {
     });
 }
 
+function rotateProfileGif() {
+    const gifs = [
+        "/images/coding.gif",
+        "/images/coding1.gif",
+        "/images/coding2.gif",
+        "/images/coding3.gif",
+        "/images/coding4.gif",
+    ];
+
+    const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+    const profileImg = document.querySelector(".profile-img");
+
+    if (profileImg) {
+        profileImg.src = randomGif;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const tabNav = new TabNavigation();
     new SolarSystem("bg-canvas");
     new MainContactForm();
     wireGoToContact(tabNav);
+    rotateProfileGif();
 
     revealAppShell().catch(() => {
         document.body.classList.add("is-app-ready");

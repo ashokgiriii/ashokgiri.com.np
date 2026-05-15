@@ -20,11 +20,7 @@
       rel="stylesheet"
     />
 
-    <link
-      rel="shortcut icon"
-      href="/images/mainphoto.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="/images/me.png" type="image/x-icon" />
 
     <!-- Tailwind CSS (built locally) -->
     <link rel="stylesheet" href="dist/tailwind.css" />
@@ -101,10 +97,10 @@
         <aside class="sidebar" aria-label="Profile sidebar">
           <header class="flex flex-col items-center">
             <img
-              src="/images/mainphoto.png"
+              src="/images/coding.gif"
               alt="Portrait of Ashok Giri"
               class="profile-img"
-              loading="lazy"
+              loading="eager"
               decoding="async"
               fetchpriority="high"
               width="240"
@@ -252,16 +248,16 @@
           <section class="mb-6" aria-label="Skills">
             <h2 class="header-accent text-lg font-semibold">Skills</h2>
 
-            <div class="mb-4">
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Frontend</h3>
-              <div class="flex flex-wrap">
+            <!-- Frontend -->
+            <div class="mb-5">
+              <h3 class="text-sm font-medium text-gray-300 mb-3">Frontend</h3>
+
+              <div class="flex flex-wrap gap-2">
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                    alt=""
+                    alt="HTML5"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
                   HTML5
                 </span>
@@ -269,10 +265,8 @@
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                    alt=""
+                    alt="CSS3"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
                   CSS3
                 </span>
@@ -280,32 +274,53 @@
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                    alt=""
+                    alt="JavaScript"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
                   JavaScript
                 </span>
 
                 <span class="skill-pill">
                   <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                    alt="TypeScript"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
+                  />
+                  TypeScript
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                    alt="React"
+                    class="w-4 h-4"
                   />
                   React
                 </span>
 
                 <span class="skill-pill">
                   <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
-                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                    alt="Next.js"
+                    class="w-4 h-4 bg-white rounded-full p-0.5"
+                  />
+                  Next.js
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
+                    alt="Redux"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
+                  />
+                  Redux
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                    alt="Bootstrap"
+                    class="w-4 h-4"
                   />
                   Bootstrap
                 </span>
@@ -313,26 +328,33 @@
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                    alt=""
+                    alt="Tailwind CSS"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
-                  Tailwind
+                  Tailwind CSS
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg"
+                    alt="Three.js"
+                    class="w-4 h-4 bg-white rounded-full p-0.5"
+                  />
+                  Three.js
                 </span>
               </div>
             </div>
 
-            <div class="mb-4">
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Backend</h3>
-              <div class="flex flex-wrap">
+            <!-- Backend -->
+            <div class="mb-5">
+              <h3 class="text-sm font-medium text-gray-300 mb-3">Backend</h3>
+
+              <div class="flex flex-wrap gap-2">
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                    alt=""
+                    alt="Node.js"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
                   Node.js
                 </span>
@@ -340,50 +362,109 @@
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                    alt=""
+                    alt="Express"
                     class="w-4 h-4 bg-white rounded-full p-0.5"
-                    loading="lazy"
-                    decoding="async"
                   />
                   Express
                 </span>
-              </div>
-            </div>
 
-            <div>
-              <h3 class="text-sm font-medium text-gray-300 mb-2">Tools</h3>
-              <div class="flex flex-wrap">
                 <span class="skill-pill">
                   <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                    alt=""
+                    alt="MongoDB"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
                   MongoDB
                 </span>
 
                 <span class="skill-pill">
                   <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                    alt=""
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg"
+                    alt="Mongoose"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
+                  />
+                  Mongoose
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                    alt="Firebase"
+                    class="w-4 h-4"
+                  />
+                  Firebase
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg"
+                    alt="Socket.io"
+                    class="w-4 h-4 bg-white rounded-full p-0.5"
+                  />
+                  Socket.io
+                </span>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div>
+              <h3 class="text-sm font-medium text-gray-300 mb-3">
+                Tools & Platforms
+              </h3>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                    alt="Git"
+                    class="w-4 h-4"
                   />
                   Git
                 </span>
 
                 <span class="skill-pill">
                   <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                    alt="GitHub"
+                    class="w-4 h-4 bg-white rounded-full p-0.5"
+                  />
+                  GitHub
+                </span>
+
+                <span class="skill-pill">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                    alt=""
+                    alt="VS Code"
                     class="w-4 h-4"
-                    loading="lazy"
-                    decoding="async"
                   />
                   VS Code
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                    alt="Linux"
+                    class="w-4 h-4"
+                  />
+                  Linux
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
+                    alt="NPM"
+                    class="w-4 h-4"
+                  />
+                  NPM
+                </span>
+
+                <span class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                    alt="Postman"
+                    class="w-4 h-4"
+                  />
+                  Postman
                 </span>
               </div>
             </div>
@@ -401,12 +482,11 @@
               Professional Summary
             </h2>
             <p class="text-gray-300 leading-relaxed">
-              Results-driven web developer with a strong foundation in both
-              frontend and backend technologies. Experienced in building
-              responsive, dynamic, and user-friendly web applications using
-              modern JavaScript frameworks and libraries. Passionate about
-              creating efficient, scalable solutions with clean code and
-              intuitive user interfaces.
+              Web developer with experience in frontend and backend development.
+              Skilled in building responsive and user-friendly web applications
+              using modern JavaScript frameworks and tools. Familiar with AI
+              technologies and focused on writing clean code and creating
+              simple, efficient solutions.
             </p>
           </section>
 
@@ -418,6 +498,9 @@
 
           <!-- Mini Navbar -->
           <nav class="mini-navbar mb-6" aria-label="Section navigation">
+            <button type="button" class="nav-tab" data-section="education">
+              Education
+            </button>
             <button
               type="button"
               class="nav-tab active"
@@ -425,9 +508,7 @@
             >
               Projects
             </button>
-            <button type="button" class="nav-tab" data-section="education">
-              Education
-            </button>
+
             <button type="button" class="nav-tab" data-section="contact">
               Contact
             </button>
@@ -799,10 +880,6 @@
                 <p class="footer-copyright">
                   © 2026 Ashok Giri. All rights reserved.
                 </p>
-                <div class="footer-links">
-                  <a href="#" class="footer-link">Privacy Policy</a>
-                  <a href="#" class="footer-link">Terms of Service</a>
-                </div>
               </div>
             </div>
           </footer>
