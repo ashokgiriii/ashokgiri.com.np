@@ -491,14 +491,14 @@ class MainContactForm {
                 const data = await res.json().catch(() => ({}));
                 if (!res.ok) {
                     throw new Error(
-                        data.error || "Could not confirm delivery. Try again or email contact@ashokgiri.com.np."
+                        data.error || "Could not confirm delivery. Try again or email ashokgiri.dev@gmail.com."
                     );
                 }
             })
             .catch((err) => {
                 this.showStatus(
                     err.message ||
-                        "Could not confirm delivery. Try again or email contact@ashokgiri.com.np.",
+                        "Could not confirm delivery. Try again or email ashokgiri.dev@gmail.com.",
                     "error"
                 );
             })

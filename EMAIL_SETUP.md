@@ -1,4 +1,4 @@
-# Email Workflow Setup
+ # Email Workflow Setup
 
 The portfolio's contact form uses **Nodemailer** with SMTP to send emails. To enable this feature, you need to configure your email credentials in the `.env` file.
 

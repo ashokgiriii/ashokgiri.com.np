@@ -1,5 +1,7 @@
 node_modules
 .env
+.env.example
+EMAIL_SETUP.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

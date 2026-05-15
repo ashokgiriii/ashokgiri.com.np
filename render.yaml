@@ -18,6 +18,6 @@ services:
       - key: MAIL_FROM
         value: "Portfolio Contact <noreply@ashokgiri.com.np>"
       - key: CONTACT_RECEIVER
-        value: "contact@ashokgiri.com.np"
+        value: "ashokgiri.dev@gmail.com"
       - key: NODE_ENV
         value: production
