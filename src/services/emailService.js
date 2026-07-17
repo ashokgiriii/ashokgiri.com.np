@@ -94,32 +94,90 @@ async function sendContactEmail({ to, replyTo, subject, name, message }) {
         );
     }
 
-    const htmlContent = `
-    <h2>New Contact Message</h2>
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(replyTo)}</p>
-    <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-    <p><strong>Message:</strong></p>
-    <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
-  `;
+    const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Contact</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f5;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background-color:#ffffff;border-radius:8px;border:1px solid #e4e4e7;overflow:hidden;">
+          <tr>
+            <td style="background-color:#18181b;padding:24px 32px;">
+              <p style="margin:0;color:#fafafa;font-size:14px;font-weight:600;letter-spacing:0.5px;">Portfolio Website</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px;">
+              <p style="margin:0 0 24px;color:#71717a;font-size:13px;text-transform:uppercase;letter-spacing:1px;">New message from your portfolio</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+                <tr>
+                  <td style="padding:12px 16px;background-color:#f4f4f5;border-radius:6px;">
+                    <p style="margin:0 0 4px;color:#a1a1aa;font-size:12px;">From</p>
+                    <p style="margin:0;color:#18181b;font-size:14px;font-weight:500;">${escapeHtml(name)} &lt;${escapeHtml(replyTo)}&gt;</p>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+                <tr>
+                  <td style="padding:12px 16px;background-color:#f4f4f5;border-radius:6px;">
+                    <p style="margin:0 0 4px;color:#a1a1aa;font-size:12px;">Subject</p>
+                    <p style="margin:0;color:#18181b;font-size:14px;font-weight:500;">${escapeHtml(subject)}</p>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:16px;border:1px solid #e4e4e7;border-radius:6px;">
+                    <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px;">Message</p>
+                    <p style="margin:0;color:#27272a;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(message).replace(/\n/g, "<br>")}</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 32px;background-color:#fafafa;border-top:1px solid #e4e4e7;">
+              <p style="margin:0;color:#a1a1aa;font-size:12px;">Sent from your portfolio contact form</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
 
     const textContent = [
-        `Name: ${name}`,
-        `Email: ${replyTo}`,
+        "Portfolio Website - New Message",
+        "",
+        `From: ${name} <${replyTo}>`,
         `Subject: ${subject}`,
         "",
         "Message:",
+        "",
         message,
+        "",
+        "---",
+        "Sent from your portfolio contact form",
     ].join("\n");
 
     try {
         const info = await transporter.sendMail({
-            from: MAIL_FROM,
+            from: `"Portfolio Website" <${MAIL_FROM}>`,
             to,
             replyTo,
-            subject: `New Portfolio Message: ${subject}`,
+            subject: `Message from ${name}: ${subject}`,
             text: textContent,
             html: htmlContent,
+            headers: {
+                "X-Mailer": "Portfolio-Contact-Form",
+                "List-Unsubscribe": "<mailto:ashokgiri.dev@gmail.com?subject=unsubscribe>",
+            },
         });
         return { messageId: info.messageId };
     } catch (err) {

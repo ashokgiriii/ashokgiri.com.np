@@ -16,7 +16,7 @@ services:
       - key: SMTP_PASS
         sync: false
       - key: MAIL_FROM
-        value: "Portfolio Contact <noreply@ashokgiri.com.np>"
+        value: "noreply@ashokgiri.com.np"
       - key: CONTACT_RECEIVER
         value: "ashokgiri.dev@gmail.com"
       - key: NODE_ENV

@@ -171,15 +171,6 @@ body.is-app-ready .page-skeleton {
   }
 }
 
-.redirect-link {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  width: 100%;
-  opacity: 0;
-  left: 0;
-}
-
 .glass-panel {
   background: linear-gradient(
     135deg,
@@ -359,22 +350,6 @@ body.is-app-ready .page-skeleton {
   margin: 0;
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.footer-link {
-  color: #9aa3b2;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-  color: #ffffff;
-}
-
 .skill-pill {
   display: inline-flex;
   align-items: center;
@@ -423,7 +398,6 @@ body.is-app-ready .page-skeleton {
   object-fit: cover;
   margin: 0 auto 1.5rem;
 }
-
 
 .contact-item {
   display: flex;
@@ -584,9 +558,227 @@ body.is-app-ready .page-skeleton {
   box-shadow: 0 12px 28px rgba(128, 128, 128, 0.15);
 }
 
+.project-live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #4ade80;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.project-live-btn:hover {
+  background: rgba(74, 222, 128, 0.22);
+  border-color: rgba(74, 222, 128, 0.5);
+  color: #86efac;
+  transform: translateY(-1px);
+}
+
 .project-icon {
   color: #808080;
   margin-right: 0.5rem;
+}
+
+/* Certifications */
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(128, 128, 128, 0.08) 0%,
+    rgba(128, 128, 128, 0.12) 100%
+  );
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(128, 128, 128, 0.4);
+}
+
+.cert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: #818cf8;
+  flex-shrink: 0;
+}
+
+.cert-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.cert-date {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.cert-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #818cf8;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.cert-view-btn:hover {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #a5b4fc;
+  transform: translateY(-1px);
+}
+
+/* Certificate Viewer Modal */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.cert-modal[hidden] {
+  display: none;
+}
+
+.cert-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.cert-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  background: #1a1a2e;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.cert-modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(128, 128, 128, 0.15);
+  color: #9aa3b2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-modal__close:hover {
+  background: rgba(128, 128, 128, 0.3);
+  color: #ffffff;
+}
+
+.cert-modal__body {
+  padding: 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-modal__img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+/* Partnership */
+.partner-card {
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(128, 128, 128, 0.08) 0%,
+    rgba(128, 128, 128, 0.12) 100%
+  );
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(128, 128, 128, 0.45);
+}
+
+.partner-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #818cf8;
+  flex-shrink: 0;
+}
+
+.partner-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .timeline-item {
@@ -631,8 +823,7 @@ body.is-app-ready .page-skeleton {
 
   .sidebar {
     padding: 1rem;
-    border-radius: none;
-
+    border-radius: 0;
     border-right: none;
     border-bottom: 1px solid rgba(128, 128, 128, 0.2);
   }
@@ -658,7 +849,9 @@ body.is-app-ready .page-skeleton {
     white-space: nowrap;
   }
 
-  .nav-tab[data-section="contact"] {
+  .nav-tab[data-section="contact"],
+  .nav-tab[data-section="certification"],
+  .nav-tab[data-section="partnership"] {
     display: none;
   }
 
@@ -717,7 +910,9 @@ body.is-app-ready .page-skeleton {
     font-size: 0.85rem;
   }
 
-  .nav-tab[data-section="contact"] {
+  .nav-tab[data-section="contact"],
+  .nav-tab[data-section="certification"],
+  .nav-tab[data-section="partnership"] {
     display: none;
   }
 

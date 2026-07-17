@@ -567,12 +567,56 @@ function rotateProfileGif() {
     }
 }
 
+function initCertModal() {
+    const modal = document.getElementById("cert-modal");
+    if (!modal) return;
+    const title = document.getElementById("cert-modal-title");
+    const issuer = document.getElementById("cert-modal-issuer");
+    const img = document.getElementById("cert-modal-img");
+    const body = modal.querySelector(".cert-modal__body");
+    const closeBtn = modal.querySelector(".cert-modal__close");
+    const backdrop = modal.querySelector(".cert-modal__backdrop");
+
+    function open(certCard) {
+        const file = certCard.dataset.certFile;
+        if (file && file.endsWith(".pdf")) {
+            window.open(file, "_blank");
+            return;
+        }
+        title.textContent = certCard.dataset.certTitle || "";
+        issuer.textContent = [certCard.dataset.certIssuer, certCard.dataset.certDate].filter(Boolean).join(" — ");
+        img.src = certCard.dataset.certImg || "";
+        img.alt = certCard.dataset.certTitle || "Certificate";
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+        modal.hidden = true;
+        document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".cert-view-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            open(btn.closest(".cert-card"));
+        });
+    });
+
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", close);
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.hidden) close();
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const tabNav = new TabNavigation();
     new SolarSystem("bg-canvas");
     new MainContactForm();
     wireGoToContact(tabNav);
     rotateProfileGif();
+    initCertModal();
 
     revealAppShell().catch(() => {
         document.body.classList.add("is-app-ready");

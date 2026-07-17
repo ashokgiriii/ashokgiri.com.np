@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ashok Giri | sautaboy</title>
-    <meta
-      name="description"
-      content="Ashok Giri (sautaboy) — Web Developer building modern, responsive web apps with React, Node.js, and MongoDB."
-    />
+    <title>Ashok Giri | Web Developer</title>
+    <meta name="description" content="Ashok Giri — Web Developer building modern, responsive web apps with React, Node.js, and MongoDB. View my projects and get in touch." />
     <meta name="theme-color" content="#0b1020" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ashok Giri | Web Developer" />
+    <meta property="og:description" content="Web Developer building modern, responsive web apps with React, Node.js, and MongoDB." />
+    <meta property="og:image" content="/images/me.png" />
+    <meta property="og:url" content="https://ashokgiri.com.np" />
 
     <!-- Preconnect for faster font load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +24,7 @@
       rel="stylesheet"
     />
 
-    <link rel="shortcut icon" href="/images/me.png" type="image/x-icon" />
+    <link rel="icon" href="/images/me.png" type="image/png" />
 
     <!-- Tailwind CSS (built locally) -->
     <link rel="stylesheet" href="dist/tailwind.css" />
@@ -97,14 +101,14 @@
         <aside class="sidebar" aria-label="Profile sidebar">
           <header class="flex flex-col items-center">
             <img
-              src=""
+              src="/images/me.png"
               alt="Portrait of Ashok Giri"
               class="profile-img"
               loading="eager"
               decoding="async"
               fetchpriority="high"
-              width="240"
-              height="240"
+              width="160"
+              height="160"
             />
 
             <h1 class="text-2xl font-bold text-center mb-1">Ashok Giri</h1>
@@ -508,11 +512,60 @@
             <button type="button" class="nav-tab" data-section="projects">
               Projects
             </button>
-
+            <button type="button" class="nav-tab" data-section="certification">
+              Certification
+            </button>
+            <button type="button" class="nav-tab" data-section="partnership">
+              Partnership
+            </button>
             <button type="button" class="nav-tab" data-section="contact">
               Contact
             </button>
           </nav>
+
+          <!-- Education Section -->
+          <section
+            class="content-section active"
+            id="education-section"
+            aria-label="Education"
+          >
+            <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
+
+            <div class="timeline-item">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">
+                  Bachelor of Computer Applications (BCA)
+                </h3>
+                <span
+                  class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full"
+                  >2021 – Present</span
+                >
+              </div>
+              <p class="text-gray-400 text-sm">Tribhuvan University</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">+2 in Computer Science</h3>
+                <span
+                  class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full"
+                  >2019 – 2021</span
+                >
+              </div>
+              <p class="text-gray-400 text-sm">Hetauda School of Management</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="flex justify-between items-start">
+                <h3 class="font-semibold">SEE (Grade 10)</h3>
+                <span
+                  class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full"
+                  >2017 – 2019</span
+                >
+              </div>
+              <p class="text-gray-400 text-sm">Siddhartha Shisu Sadan Secondary School</p>
+            </div>
+          </section>
 
           <!-- Projects Section -->
           <section
@@ -526,31 +579,37 @@
 
             <!-- Project 1 -->
             <article class="project-card">
-              <a
-                class="redirect-link"
-                href="https://tweetnepal-sr0s.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Food For All project"
-              ></a>
-
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
+              <h3 class="font-semibold text-lg mb-2 flex items-center justify-between">
+                <span class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="project-icon h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Food For All
+                </span>
+                <a
+                  href="https://tweetnepal-sr0s.onrender.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-live-btn"
+                  aria-label="View Food For All live"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Food For All
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                  </svg>
+                  Live
+                </a>
               </h3>
 
               <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
@@ -586,36 +645,42 @@
 
             <!-- Project 2 -->
             <article class="project-card">
-              <a
-                class="redirect-link"
-                href="https://tweetnepal-sr0s.onrender.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Tweet Nepal project"
-              ></a>
-
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
+              <h3 class="font-semibold text-lg mb-2 flex items-center justify-between">
+                <span class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="project-icon h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Tweet Nepal
+                </span>
+                <a
+                  href="https://tweetnepal-sr0s.onrender.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-live-btn"
+                  aria-label="View Tweet Nepal live"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Tweet Nepal
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                  </svg>
+                  Live
+                </a>
               </h3>
 
               <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
                 <li>
-                  A platform to share thoughts, post notes, read others’
+                  A platform to share thoughts, post notes, read others'
                   updates, and join conversations through comments.
                 </li>
                 <li>
@@ -646,23 +711,25 @@
 
             <!-- Project 3 -->
             <article class="project-card">
-              <h3 class="font-semibold text-lg mb-2 flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="project-icon h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Bytes Pedia
+              <h3 class="font-semibold text-lg mb-2 flex items-center justify-between">
+                <span class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="project-icon h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Bytes Pedia
+                </span>
               </h3>
 
               <ul class="list-disc pl-6 text-gray-300 space-y-1 text-sm">
@@ -696,37 +763,116 @@
             </article>
           </section>
 
-          <!-- Education Section -->
+          <!-- Certification Section -->
           <section
-            class="content-section active"
-            id="education-section"
-            aria-label="Education"
+            class="content-section"
+            id="certification-section"
+            aria-label="Certifications"
           >
-            <h2 class="header-accent text-xl font-bold mb-4">Education</h2>
+            <h2 class="header-accent text-xl font-bold mb-4">Certification</h2>
 
-            <div class="timeline-item">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">
-                  Bachelor of Computer Applications (BCA)
-                </h3>
-                <span
-                  class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full"
-                  >2021 – Present</span
-                >
+            <div class="cert-card" data-cert-title="Certificate of Appreciation — FUTURAMA 2023 Ambassador" data-cert-issuer="ING Skill Academy" data-cert-date="August 2023" data-cert-file="files/Scanned_20260717_195251.pdf">
+              <div class="cert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0 1 16.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.015 6.015 0 0 1-2.27.308 6.015 6.015 0 0 1-2.27-.308m4.54 0a6.02 6.02 0 0 1-4.54 0" />
+                </svg>
               </div>
-              <p class="text-gray-400 text-sm">Tribhuvan University</p>
+              <div class="cert-info">
+                <h3 class="font-semibold text-sm">Certificate of Appreciation — FUTURAMA 2023 Ambassador</h3>
+                <p class="text-gray-400 text-xs">ING Skill Academy</p>
+                <span class="cert-date">August 2023</span>
+              </div>
+              <button type="button" class="cert-view-btn" aria-label="View certificate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                View
+              </button>
             </div>
 
-            <div class="timeline-item">
-              <div class="flex justify-between items-start">
-                <h3 class="font-semibold">+2 in Computer Science</h3>
-                <span
-                  class="text-sm bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full"
-                  >2019 – 2021</span
-                >
+            <div class="cert-card" data-cert-title="Certificate of Participation — LogiCon 2024" data-cert-issuer="Hetauda School of Management" data-cert-date="June 2024" data-cert-file="files/Scanned_20260717_195338.pdf">
+              <div class="cert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
+                </svg>
               </div>
-              <p class="text-gray-400 text-sm">Hetauda School of Management</p>
+              <div class="cert-info">
+                <h3 class="font-semibold text-sm">Certificate of Participation — LogiCon 2024</h3>
+                <p class="text-gray-400 text-xs">Hetauda School of Management</p>
+                <span class="cert-date">June 2024</span>
+              </div>
+              <button type="button" class="cert-view-btn" aria-label="View certificate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                View
+              </button>
             </div>
+
+            <div class="cert-card" data-cert-title="Internship Certificate — Technical Department" data-cert-issuer="WorldLink Communications Ltd" data-cert-date="Aug – Dec 2025" data-cert-file="files/Scanned_20260717_195416.pdf">
+              <div class="cert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+              </div>
+              <div class="cert-info">
+                <h3 class="font-semibold text-sm">Internship Certificate — Technical Department</h3>
+                <p class="text-gray-400 text-xs">WorldLink Communications Ltd</p>
+                <span class="cert-date">Aug – Dec 2025</span>
+              </div>
+              <button type="button" class="cert-view-btn" aria-label="View certificate">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                View
+              </button>
+            </div>
+          </section>
+
+          <!-- Partnership Section -->
+          <section
+            class="content-section"
+            id="partnership-section"
+            aria-label="Partnerships"
+          >
+            <h2 class="header-accent text-xl font-bold mb-4">Partnership</h2>
+
+            <article class="partner-card">
+              <div class="partner-header">
+                <div class="partner-logo">
+                  <img src="/icons/catblack.svg" alt="ClawBit Labs" class="h-8 w-auto" />
+                </div>
+                <div class="partner-info">
+                  <h3 class="font-semibold text-base">ClawBit Labs</h3>
+                  <p class="text-indigo-300 text-xs font-medium">Software Development Company</p>
+                </div>
+                <a
+                  href="https://clawbitlabs.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-live-btn"
+                  aria-label="Visit ClawBit Labs website"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                  </svg>
+                  Live
+                </a>
+              </div>
+              <p class="text-gray-300 text-sm mt-3 leading-relaxed">
+                We are a modern web development team focused on building fast, clean, and user-friendly digital products.
+                We turn ideas into real-world web applications using modern technologies.
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Web Development</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">SEO Optimization</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">Responsive Design</span>
+                <span class="text-xs px-2 py-1 bg-indigo-900/50 text-indigo-300 rounded-full">College Projects</span>
+              </div>
+            </article>
           </section>
 
           <!-- Contact Section -->
@@ -793,6 +939,27 @@
             </div>
           </section>
 
+          <!-- Certificate Viewer Modal -->
+          <div id="cert-modal" class="cert-modal" role="dialog" aria-modal="true" aria-label="Certificate viewer" hidden>
+            <div class="cert-modal__backdrop"></div>
+            <div class="cert-modal__content">
+              <div class="cert-modal__header">
+                <div>
+                  <h3 id="cert-modal-title" class="font-semibold text-sm"></h3>
+                  <p id="cert-modal-issuer" class="text-gray-400 text-xs"></p>
+                </div>
+                <button type="button" class="cert-modal__close" aria-label="Close certificate viewer">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="cert-modal__body">
+                <img id="cert-modal-img" src="" alt="Certificate" class="cert-modal__img" />
+              </div>
+            </div>
+          </div>
+
           <!-- Footer -->
           <footer class="site-footer" aria-label="Site footer">
             <div class="footer-content">
@@ -808,7 +975,7 @@
                   >
                     <img
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg"
-                      alt=""
+                      alt="Facebook"
                       class="w-4 h-4"
                       loading="lazy"
                       decoding="async"
@@ -825,7 +992,7 @@
                   >
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                      alt=""
+                      alt="Instagram"
                       class="w-4 h-4"
                       loading="lazy"
                       decoding="async"
@@ -842,7 +1009,7 @@
                   >
                     <img
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                      alt=""
+                      alt="LinkedIn"
                       class="w-4 h-4"
                       loading="lazy"
                       decoding="async"
@@ -872,6 +1039,36 @@
                       />
                     </svg>
                     CV
+                  </a>
+
+                  <a
+                    href="resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-social-link"
+                    aria-label="View CV"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                    View CV
                   </a>
                 </div>
               </div>
