@@ -601,7 +601,9 @@ body.is-app-ready .page-skeleton {
     rgba(128, 128, 128, 0.12) 100%
   );
   border: 1px solid rgba(128, 128, 128, 0.2);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .cert-card:hover {
@@ -770,7 +772,11 @@ body.is-app-ready .page-skeleton {
   width: 52px;
   height: 52px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15),
+    rgba(139, 92, 246, 0.15)
+  );
   border: 1px solid rgba(99, 102, 241, 0.3);
   color: #818cf8;
   flex-shrink: 0;
@@ -835,24 +841,23 @@ body.is-app-ready .page-skeleton {
     border-radius: 0px;
   }
 
-  /* Mini Navbar Responsive */
+  /* Mini Navbar Responsive — 2 per row */
   .mini-navbar {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.4rem;
     padding: 0.4rem;
   }
 
   .nav-tab {
-    flex: 1;
-    padding: 0.5rem 0.4rem;
+    padding: 0.5rem 0.6rem;
     font-size: 0.8rem;
     white-space: nowrap;
+    text-align: center;
   }
 
-  .nav-tab[data-section="contact"],
-  .nav-tab[data-section="certification"],
-  .nav-tab[data-section="partnership"] {
-    display: none;
+  .nav-tab:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   /* Timeline Responsive */
@@ -901,19 +906,11 @@ body.is-app-ready .page-skeleton {
   .mini-navbar {
     padding: 0.3rem;
     gap: 0.3rem;
-    display: flex;
   }
 
   .nav-tab {
-    flex: 1;
-    padding: 0.5rem;
-    font-size: 0.85rem;
-  }
-
-  .nav-tab[data-section="contact"],
-  .nav-tab[data-section="certification"],
-  .nav-tab[data-section="partnership"] {
-    display: none;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.75rem;
   }
 
   body {
